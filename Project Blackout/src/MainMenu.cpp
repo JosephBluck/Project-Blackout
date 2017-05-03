@@ -29,6 +29,9 @@ bool MainMenu::InitMenu()
 	particle = new Sprite(renderer, "resources\\sprites\\mainmenu\\menuparticle.png", 4000, 0, 24, 24);
 	backGlow = new Sprite(renderer, "resources\\sprites\\mainmenu\\redglow.png", 0, 720, 1280, 360);
 
+	//BUTTONS
+	newGameButton = new Sprite(renderer, "resources\\spriates\\mainmenu\\newgame.png", 1000, 0, 420, 100);
+
 
 	if (!title1->isValid || !title2->isValid || !flash->isValid) {
 		std::cout << "Main menu failed to initialise!" << "\n";
@@ -37,6 +40,8 @@ bool MainMenu::InitMenu()
 		delete flash;
 		delete particle;
 		delete backGlow;
+		delete newGameButton;
+		delete newGameButton;
 
 		return false;
 	}

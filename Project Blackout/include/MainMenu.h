@@ -23,6 +23,9 @@ private:
 	Sprite* particle = NULL;
 	Sprite* backGlow = NULL;
 
+	//BUTTONS
+	Sprite* newGameButton = NULL;
+
 	//TIMER
 	int timer;
 
