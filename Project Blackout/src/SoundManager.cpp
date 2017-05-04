@@ -23,7 +23,11 @@ SoundManager::SoundManager(int _soundCount, char* musicFile)
 	bgm = Mix_LoadMUS(musicFile);
 
 	if (bgm != NULL) {
+		//std::cout << "BGM SUCCESSFULLY LOADED FROM " << musicFile << "\n"; //Debugging Lines
 		hasBGM = true; //BGM Successfully loaded
+	}
+	else {
+		//std::cout << "BGM Loading unsuccessful! " << Mix_GetError() << "\n"; //Debugging Lines
 	}
 }
 

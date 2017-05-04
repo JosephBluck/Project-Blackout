@@ -48,9 +48,12 @@ bool MainMenu::InitMenu()
 
 	cursorSprite = new Sprite(renderer, "resources\\sprites\\mainmenu\\cursor.png", 1000, 0, 50, 100); //CURSOR
 
-	//SOUND
-	menuSounds = new SoundManager(1);
+	//SOUNDS
+	menuSounds = new SoundManager(4, "resources\\sounds\\mainmenu\\zapper.mp3");
 	menuSounds->LoadSound(0, "resources\\sounds\\mainmenu\\select.wav");
+	menuSounds->LoadSound(1, "resources\\sounds\\mainmenu\\dropping.wav");
+	menuSounds->LoadSound(2, "resources\\sounds\\mainmenu\\explosion.wav");
+	menuSounds->LoadSound(3, "resources\\sounds\\mainmenu\\Begin.wav");
 
 	//If assets haven't loaded, delete everything and return false on initialisation
 	if (!title1->isValid || !title2->isValid || !flash->isValid) {
@@ -72,6 +75,7 @@ bool MainMenu::InitMenu()
 		return false;
 	}
 
+	menuSounds->PlaySound(1);
 	initSuccess = true; //Success
 	return true;
 }
@@ -88,34 +92,8 @@ void MainMenu::Update()
 	if (timer < 450) {
 		Intro();
 	}
-	else {
-		MouseInput();
-
-		if (timer % 2 == 0) { //GENERATE NEW MENU PARTICLES
-			int randSize = 16 + (rand() % 9);
-			menuParticles.push_back(new FloatParticle(particle, rand() % 1260, 720, randSize, randSize, 0, -1 - (rand() % 2), 60, 30));
-			menuParticles.push_back(new FloatParticle(particle, rand() % 1260, 720, randSize, randSize, 0, -1 - (rand() % 2), 60, 30));
-		}
-
-		for (int i = 0; i < menuParticles.size(); i++) { //UPDATE ALL PARTICLES
-			if (!menuParticles[i]->isExpired) {
-				menuParticles[i]->Update();
-			}
-			else {
-				delete menuParticles[i];
-				menuParticles[i] = nullptr;
-			}
-		}
-
-		//Clear out expired particles
-		menuParticles.erase(std::remove(menuParticles.begin(), menuParticles.end(), nullptr), menuParticles.end());
-
-		title1->Draw(380, 20);
-		title2->Draw(320, 180);
-		newGameButton->Draw(200, 350);
-		loadGameButton->Draw(650, 350);
-		optionsButton->Draw(200, 450);
-		exitButton->Draw(650, 450);
+	else if (!startGame) {
+		MenuIdle();
 	}
 
 }
@@ -159,6 +137,13 @@ void MainMenu::Intro()
 		title2->Draw(320, 180);
 	}
 
+	//SOUNDS
+	if (timer == 120) {
+		menuSounds->PlaySound(2);
+	}
+	if (timer == 300) {
+		menuSounds->PlayBGM(-1);
+	}
 
 }
 
@@ -198,4 +183,36 @@ void MainMenu::MouseInput()
 		deltaHover = hover;
 		menuSounds->PlaySound(0);
 	}
+}
+
+//Menu when it is idle
+void MainMenu::MenuIdle()
+{
+	MouseInput();
+
+	if (timer % 2 == 0) { //GENERATE NEW MENU PARTICLES
+		int randSize = 16 + (rand() % 9);
+		menuParticles.push_back(new FloatParticle(particle, rand() % 1260, 720, randSize, randSize, 0, -1 - (rand() % 2), 60, 30));
+		menuParticles.push_back(new FloatParticle(particle, rand() % 1260, 720, randSize, randSize, 0, -1 - (rand() % 2), 60, 30));
+	}
+
+	for (int i = 0; i < menuParticles.size(); i++) { //UPDATE ALL PARTICLES
+		if (!menuParticles[i]->isExpired) {
+			menuParticles[i]->Update();
+		}
+		else {
+			delete menuParticles[i];
+			menuParticles[i] = nullptr;
+		}
+	}
+
+	//Clear out expired particles
+	menuParticles.erase(std::remove(menuParticles.begin(), menuParticles.end(), nullptr), menuParticles.end());
+
+	title1->Draw(380, 20);
+	title2->Draw(320, 180);
+	newGameButton->Draw(200, 350);
+	loadGameButton->Draw(650, 350);
+	optionsButton->Draw(200, 450);
+	exitButton->Draw(650, 450);
 }

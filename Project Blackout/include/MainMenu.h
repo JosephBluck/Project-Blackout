@@ -20,6 +20,7 @@ public:
 private:
 	SDL_Renderer* renderer;
 	bool initSuccess;
+	bool startGame = false;
 
 	InputManager* input = NULL;//INPUT
 
@@ -59,4 +60,5 @@ private:
 	std::vector<FloatParticle*>menuParticles;
 	
 	//PRIVATE FUNCTIONS
+	void MenuIdle();
 };

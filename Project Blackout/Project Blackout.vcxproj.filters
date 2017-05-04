@@ -51,6 +51,9 @@
     <ClCompile Include="src\SoundManager.cpp">
       <Filter>Source Files\Core Classes</Filter>
     </ClCompile>
+    <ClCompile Include="src\AnimSprite.cpp">
+      <Filter>Source Files\Core Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\SDLInit.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files\Core Classes</Filter>
     </ClInclude>
     <ClInclude Include="include\SoundManager.h">
+      <Filter>Header Files\Core Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AnimSprite.h">
       <Filter>Header Files\Core Classes</Filter>
     </ClInclude>
   </ItemGroup>
