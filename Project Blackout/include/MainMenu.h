@@ -25,6 +25,9 @@ private:
 
 	//BUTTONS
 	Sprite* newGameButton = NULL;
+	Sprite* loadGameButton = NULL;
+	Sprite* optionsButton = NULL;
+	Sprite* exitButton = NULL;
 
 	//TIMER
 	int timer;

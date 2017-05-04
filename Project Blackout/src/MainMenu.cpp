@@ -16,6 +16,11 @@ MainMenu::~MainMenu()
 		delete flash;
 		delete particle;
 		delete backGlow;
+
+		delete newGameButton;
+		delete loadGameButton;
+		delete optionsButton;
+		delete exitButton;
 	}
 }
 
@@ -30,7 +35,10 @@ bool MainMenu::InitMenu()
 	backGlow = new Sprite(renderer, "resources\\sprites\\mainmenu\\redglow.png", 0, 720, 1280, 360);
 
 	//BUTTONS
-	newGameButton = new Sprite(renderer, "resources\\spriates\\mainmenu\\newgame.png", 1000, 0, 420, 100);
+	newGameButton = new Sprite(renderer, "resources\\sprites\\mainmenu\\newgame.png", 1000, 0, 420, 100);
+	loadGameButton = new Sprite(renderer, "resources\\sprites\\mainmenu\\Loadgame.png", 1000, 0, 440, 100);
+	optionsButton = new Sprite(renderer, "resources\\sprites\\mainmenu\\Options.png", 1000, 0, 305, 100);
+	exitButton = new Sprite(renderer, "resources\\sprites\\mainmenu\\Exit.png", 1000, 0, 400, 100);
 
 
 	if (!title1->isValid || !title2->isValid || !flash->isValid) {
@@ -40,8 +48,11 @@ bool MainMenu::InitMenu()
 		delete flash;
 		delete particle;
 		delete backGlow;
+
 		delete newGameButton;
-		delete newGameButton;
+		delete loadGameButton;
+		delete optionsButton;
+		delete exitButton;
 
 		return false;
 	}
@@ -58,7 +69,7 @@ void MainMenu::Update()
 		backGlow->Draw(0, 540 + (sin(timer * 0.02) * 120));
 	}
 
-	if (timer < 420) {
+	if (timer < 450) {
 		Intro();
 	}
 	else {
@@ -83,6 +94,10 @@ void MainMenu::Update()
 
 		title1->Draw(380, 20);
 		title2->Draw(320, 180);
+		newGameButton->Draw(200, 350);
+		loadGameButton->Draw(650, 350);
+		optionsButton->Draw(200, 450);
+		exitButton->Draw(650, 450);
 	}
 
 }
@@ -113,6 +128,17 @@ void MainMenu::Intro()
 	else if (timer < 420) {
 		title1->Draw(380, 20);
 		title2->Draw(1280 - ((timer - 360) * 16), 180);
+	}
+	else if (timer < 450) {
+		newGameButton->Draw(200, 720 - ((timer - 420) * (370 / 30)));
+		loadGameButton->Draw(650, 720 - ((timer - 420) * (370 / 30)));
+		optionsButton->Draw(200, 720 - ((timer - 420) * (270 / 30)));
+		exitButton->Draw(650, 720 - ((timer - 420) * (270 / 30)));
+	}
+
+	if (timer >= 420) {
+		title1->Draw(380, 20);
+		title2->Draw(320, 180);
 	}
 
 

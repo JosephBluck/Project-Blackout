@@ -36,5 +36,6 @@ int main(int arc, char* args[])
 	Mix_Quit();
 	SDL_Quit();
 
+	system("pause"); //Memory leak check
 	return 0;
 }
