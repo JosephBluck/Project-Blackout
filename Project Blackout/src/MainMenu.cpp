@@ -1,15 +1,18 @@
 #include "MainMenu.h"
 
-MainMenu::MainMenu(SDL_Renderer* rendererInput)
+MainMenu::MainMenu(SDL_Renderer* rendererInput, InputManager* _input)
 {
 	initSuccess = false;
 	renderer = rendererInput;
 	timer = 0;
+	exit = false;
+
+	input = _input; //Assign input manager for keyboard controls
 }
 
 MainMenu::~MainMenu()
 {
-	//If initialisation succeeded, remove loaded assets
+	//If initialisation succeeded, remove loaded assets on closing
 	if (initSuccess) {
 		delete title1;
 		delete title2;
@@ -21,12 +24,14 @@ MainMenu::~MainMenu()
 		delete loadGameButton;
 		delete optionsButton;
 		delete exitButton;
+		delete cursorSprite;
 	}
 }
 
 //Initialise all objects the menu uses
 bool MainMenu::InitMenu()
 {
+	//Main Visuals
 	title1 = new Sprite(renderer, "resources\\sprites\\mainmenu\\title1.png", 2000, 0, 550, 200);
 	title2 = new Sprite(renderer, "resources\\sprites\\mainmenu\\title2.png", 2000, 0, 670, 200);
 	flash = new Sprite(renderer, "resources\\sprites\\mainmenu\\flash.png", 3000, 0, 1280, 1280);
@@ -40,7 +45,11 @@ bool MainMenu::InitMenu()
 	optionsButton = new Sprite(renderer, "resources\\sprites\\mainmenu\\Options.png", 1000, 0, 305, 100);
 	exitButton = new Sprite(renderer, "resources\\sprites\\mainmenu\\Exit.png", 1000, 0, 400, 100);
 
+	cursorSprite = new Sprite(renderer, "resources\\sprites\\mainmenu\\cursor.png", 1000, 0, 50, 100); //CURSOR
 
+
+
+	//If assets haven't loaded, delete everything and return false on initialisation
 	if (!title1->isValid || !title2->isValid || !flash->isValid) {
 		std::cout << "Main menu failed to initialise!" << "\n";
 		delete title1;
@@ -53,19 +62,21 @@ bool MainMenu::InitMenu()
 		delete loadGameButton;
 		delete optionsButton;
 		delete exitButton;
+		delete cursorSprite;
 
 		return false;
 	}
 
-	initSuccess = true;
+	initSuccess = true; //Success
 	return true;
 }
 
 //MENU UPDATING
 void MainMenu::Update()
 {
-	timer++;
-	if (timer > 300) {
+	timer++; //CORE TIMER
+	
+	if (timer > 360) { //Backglow effect
 		backGlow->Draw(0, 540 + (sin(timer * 0.02) * 120));
 	}
 
@@ -73,6 +84,8 @@ void MainMenu::Update()
 		Intro();
 	}
 	else {
+		MouseInput();
+
 		if (timer % 2 == 0) { //GENERATE NEW MENU PARTICLES
 			int randSize = 16 + (rand() % 9);
 			menuParticles.push_back(new FloatParticle(particle, rand() % 1260, 720, randSize, randSize, 0, -1 - (rand() % 2), 60, 30));
@@ -142,4 +155,29 @@ void MainMenu::Intro()
 	}
 
 
+}
+
+//MOUSE CHECKING
+void MainMenu::MouseInput()
+{
+	mouseState = SDL_GetMouseState(&mouseX, &mouseY); //Get the current position of the cursor and button state
+
+	SDL_PumpEvents();
+	//New Game Button
+	if ((mouseX > 200 && mouseX < 620) && (mouseY > 350 && mouseY < 450)) {
+		cursorSprite->Draw(155 - abs((sin(timer * 0.04) * 15)), 350, SDL_FLIP_NONE);
+	}
+	else if ((mouseX > 200 && mouseX < 620) && (mouseY > 450 && mouseY < 550)) { //Options Button
+		cursorSprite->Draw(155 - abs((sin(timer * 0.04) * 15)), 450, SDL_FLIP_NONE);
+	}
+	else if ((mouseX > 650 && mouseX < 1090) && (mouseY > 350 && mouseY < 450)) { //Load game button
+		cursorSprite->Draw(1090 + abs((sin(timer * 0.04) * 15)), 350, SDL_FLIP_HORIZONTAL);
+	}
+	else if ((mouseX > 650 && mouseX < 1090) && (mouseY > 450 && mouseY < 550)) { //Exit game button
+		cursorSprite->Draw(1090 + abs((sin(timer * 0.04) * 15)), 450, SDL_FLIP_HORIZONTAL);
+
+		if (mouseState & SDL_BUTTON(SDL_BUTTON_LEFT) || input->keys[SDL_SCANCODE_RETURN]) { //Check for Click
+			exit = true;
+		}
+	}
 }

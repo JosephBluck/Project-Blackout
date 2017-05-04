@@ -14,4 +14,4 @@ REPORTED VIA IOSTREAM */
 bool InitSDL();
 bool InitExtensions();
 bool InitRenderer(SDL_Window* &window, SDL_Renderer* &renderer);
-bool CheckExit();
+//bool CheckExit(); //Old exit function, currently deprecated

@@ -1,7 +1,5 @@
 #include "SDLInit.h"
 
-const Uint8 *keyInput = SDL_GetKeyboardState(NULL);
-
 bool InitSDL()
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -50,17 +48,17 @@ bool InitRenderer(SDL_Window* &window, SDL_Renderer* &renderer)
 	return true;
 }
 
-//Check Exit Function
-bool CheckExit()
-{
-	SDL_Event e;
-	while (SDL_PollEvent(&e))
-	{
-		if (e.type == SDL_QUIT || keyInput[SDL_SCANCODE_ESCAPE])
-			return true;
-	}
-
-	//if (GETKEY[SDL_SCANCODE_ESCAPE]) { return true; }
-
-	return false;
-}
+//Check Exit Function - DEPRECATED
+//bool CheckExit()
+//{
+//	SDL_Event e;
+//	while (SDL_PollEvent(&e))
+//	{
+//		if (e.type == SDL_QUIT || keyInput[SDL_SCANCODE_ESCAPE])
+//			return true;
+//	}
+//
+//	//if (GETKEY[SDL_SCANCODE_ESCAPE]) { return true; }
+//
+//	return false;
+//}

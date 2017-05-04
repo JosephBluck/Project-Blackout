@@ -3,20 +3,26 @@
 #include "Sprite.h"
 #include "MathFunctions.h"
 #include "FloatingParticle.h"
+#include "InputManager.h"
 
 class MainMenu
 {
 public:
-	MainMenu(SDL_Renderer* rendererInput);
+	MainMenu(SDL_Renderer* rendererInput, InputManager* _input);
 	~MainMenu();
 	bool InitMenu();
 
 	void Update();
 
+	bool exit; //Exit game boolean
+
 private:
 	SDL_Renderer* renderer;
 	bool initSuccess;
 
+	InputManager* input = NULL;//INPUT
+
+	//Main details
 	Sprite* title1 = NULL;
 	Sprite* title2 = NULL;
 	Sprite* flash = NULL;
@@ -29,11 +35,20 @@ private:
 	Sprite* optionsButton = NULL;
 	Sprite* exitButton = NULL;
 
+	Sprite* cursorSprite = NULL; //Cursor Sprite
+
+	//Mouseinput
+	void MouseInput();
+	int mouseX = 0;
+	int mouseY = 0;
+
 	//TIMER
 	int timer;
 
 	//Animation Functions
 	void Intro();
+
+	Uint32 mouseState; //Mouse button variable
 
 	std::vector<FloatParticle*>menuParticles;
 };

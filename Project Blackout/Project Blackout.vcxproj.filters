@@ -45,6 +45,9 @@
     <ClCompile Include="src\FloatingParticle.cpp">
       <Filter>Source Files\Particle Classes</Filter>
     </ClCompile>
+    <ClCompile Include="src\InputManager.cpp">
+      <Filter>Source Files\Core Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\SDLInit.h">
@@ -61,6 +64,9 @@
     </ClInclude>
     <ClInclude Include="include\FloatingParticle.h">
       <Filter>Header Files\Particle Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\InputManager.h">
+      <Filter>Header Files\Core Classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

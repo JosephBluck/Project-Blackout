@@ -1,5 +1,6 @@
 #include "SDLInit.h"
 #include "MainMenu.h"
+#include "InputManager.h"
 
 int main(int arc, char* args[])
 {
@@ -14,20 +15,26 @@ int main(int arc, char* args[])
 
 	if (!InitRenderer(window, renderer)) return -3;
 
+	//INPUT MANAGER
+	InputManager* input = new InputManager();
+
 	//MAINMENU
 	MainMenu* menu = NULL;
-	menu = new MainMenu(renderer);
+	menu = new MainMenu(renderer, input);
 
 	if (menu->InitMenu()) {
 		//MENU LOOP
-		while (!CheckExit()) {
-			SDL_RenderClear(renderer);
+		while (!input->keys[SDL_SCANCODE_ESCAPE] && !menu->exit) {
+			SDL_PumpEvents(); //KEEP EVENTS UP TO DATE
+			SDL_RenderClear(renderer); //Clear Screen
 
 			menu->Update();
 
-			SDL_RenderPresent(renderer);
+			SDL_RenderPresent(renderer); //Present Frame
 		}
 	}
+
+	delete input; //Delete the input manager
 
 	//DELETE WINDOW AND CLOSE SDL
 	SDL_DestroyRenderer(renderer);
