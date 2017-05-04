@@ -48,6 +48,9 @@
     <ClCompile Include="src\InputManager.cpp">
       <Filter>Source Files\Core Classes</Filter>
     </ClCompile>
+    <ClCompile Include="src\SoundManager.cpp">
+      <Filter>Source Files\Core Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\SDLInit.h">
@@ -66,6 +69,9 @@
       <Filter>Header Files\Particle Classes</Filter>
     </ClInclude>
     <ClInclude Include="include\InputManager.h">
+      <Filter>Header Files\Core Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SoundManager.h">
       <Filter>Header Files\Core Classes</Filter>
     </ClInclude>
   </ItemGroup>

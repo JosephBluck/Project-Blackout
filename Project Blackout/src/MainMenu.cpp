@@ -25,6 +25,7 @@ MainMenu::~MainMenu()
 		delete optionsButton;
 		delete exitButton;
 		delete cursorSprite;
+		delete  menuSounds;
 	}
 }
 
@@ -47,7 +48,9 @@ bool MainMenu::InitMenu()
 
 	cursorSprite = new Sprite(renderer, "resources\\sprites\\mainmenu\\cursor.png", 1000, 0, 50, 100); //CURSOR
 
-
+	//SOUND
+	menuSounds = new SoundManager(1);
+	menuSounds->LoadSound(0, "resources\\sounds\\mainmenu\\select.wav");
 
 	//If assets haven't loaded, delete everything and return false on initialisation
 	if (!title1->isValid || !title2->isValid || !flash->isValid) {
@@ -63,6 +66,8 @@ bool MainMenu::InitMenu()
 		delete optionsButton;
 		delete exitButton;
 		delete cursorSprite;
+
+		delete menuSounds;
 
 		return false;
 	}
@@ -162,22 +167,35 @@ void MainMenu::MouseInput()
 {
 	mouseState = SDL_GetMouseState(&mouseX, &mouseY); //Get the current position of the cursor and button state
 
-	SDL_PumpEvents();
+	//SDL_PumpEvents();
 	//New Game Button
 	if ((mouseX > 200 && mouseX < 620) && (mouseY > 350 && mouseY < 450)) {
 		cursorSprite->Draw(155 - abs((sin(timer * 0.04) * 15)), 350, SDL_FLIP_NONE);
+		hover = 0;
 	}
 	else if ((mouseX > 200 && mouseX < 620) && (mouseY > 450 && mouseY < 550)) { //Options Button
 		cursorSprite->Draw(155 - abs((sin(timer * 0.04) * 15)), 450, SDL_FLIP_NONE);
+		hover = 2;
 	}
 	else if ((mouseX > 650 && mouseX < 1090) && (mouseY > 350 && mouseY < 450)) { //Load game button
 		cursorSprite->Draw(1090 + abs((sin(timer * 0.04) * 15)), 350, SDL_FLIP_HORIZONTAL);
+		hover = 3;
 	}
 	else if ((mouseX > 650 && mouseX < 1090) && (mouseY > 450 && mouseY < 550)) { //Exit game button
 		cursorSprite->Draw(1090 + abs((sin(timer * 0.04) * 15)), 450, SDL_FLIP_HORIZONTAL);
+		hover = 4;
 
 		if (mouseState & SDL_BUTTON(SDL_BUTTON_LEFT) || input->keys[SDL_SCANCODE_RETURN]) { //Check for Click
 			exit = true;
 		}
+	}
+	else {
+		hover = 0;
+		deltaHover = 0;
+	}
+
+	if (hover != deltaHover) {
+		deltaHover = hover;
+		menuSounds->PlaySound(0);
 	}
 }

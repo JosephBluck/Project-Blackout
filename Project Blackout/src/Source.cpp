@@ -39,6 +39,7 @@ int main(int arc, char* args[])
 	//DELETE WINDOW AND CLOSE SDL
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
+	Mix_CloseAudio();
 	IMG_Quit();
 	Mix_Quit();
 	SDL_Quit();

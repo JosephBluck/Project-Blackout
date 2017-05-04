@@ -4,6 +4,7 @@
 #include "MathFunctions.h"
 #include "FloatingParticle.h"
 #include "InputManager.h"
+#include "SoundManager.h"
 
 class MainMenu
 {
@@ -41,6 +42,11 @@ private:
 	void MouseInput();
 	int mouseX = 0;
 	int mouseY = 0;
+	int hover = 0;
+	int deltaHover = 0; //Checks if the current hoverstate of the mouse is different
+
+	//SOUNDS
+	SoundManager* menuSounds = NULL;
 
 	//TIMER
 	int timer;
@@ -51,4 +57,6 @@ private:
 	Uint32 mouseState; //Mouse button variable
 
 	std::vector<FloatParticle*>menuParticles;
+	
+	//PRIVATE FUNCTIONS
 };

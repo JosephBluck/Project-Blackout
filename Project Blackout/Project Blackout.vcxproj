@@ -163,6 +163,7 @@
     <ClCompile Include="src\MainMenu.cpp" />
     <ClCompile Include="src\MathFunctions.cpp" />
     <ClCompile Include="src\SDLInit.cpp" />
+    <ClCompile Include="src\SoundManager.cpp" />
     <ClCompile Include="src\Source.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
   </ItemGroup>
@@ -172,6 +173,7 @@
     <ClInclude Include="include\MainMenu.h" />
     <ClInclude Include="include\MathFunctions.h" />
     <ClInclude Include="include\SDLInit.h" />
+    <ClInclude Include="include\SoundManager.h" />
     <ClInclude Include="include\Sprite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
