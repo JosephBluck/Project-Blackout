@@ -3,6 +3,7 @@
 #include"InputManager.h"
 #include"SoundManager.h"
 #include "Sprite.h"
+#include "Player.h"
 
 class InGame : public GameState
 {
@@ -15,6 +16,8 @@ public:
 private:
 	bool InitInGame();
 	bool initSuccess;
+
+	Player* player;
 
 	InputManager* input = NULL;//input manager
 };

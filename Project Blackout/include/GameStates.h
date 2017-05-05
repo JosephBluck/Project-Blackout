@@ -1,6 +1,8 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string>
+#ifndef GAMESTATE
+#define GAMESTATE
 
 class GameStateManager;
 
@@ -25,3 +27,7 @@ protected:
 
 	bool exit;
 };
+
+#endif // !GAMESTATE
+
+

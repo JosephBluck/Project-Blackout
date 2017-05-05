@@ -8,6 +8,7 @@
 #include "SoundManager.h"
 #include "GSManager.h"
 #include "TextSprite.h"
+#include "InGame.h"
 
 class MainMenu : public GameState
 {
@@ -65,4 +66,6 @@ private:
 	//TEXT TESTING
 	AnimSprite* monoFont = NULL;
 	TextSprite* textTest = NULL;
+
+	bool jumpToGameLoop = false;
 };

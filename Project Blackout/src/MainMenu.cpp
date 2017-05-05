@@ -115,6 +115,11 @@ void MainMenu::Update()
 
 	//TEXT TESTING
 	textTest->Draw();
+
+	if (jumpToGameLoop)
+	{
+		GS_Manager->ChangeState(new InGame(renderer, input, GS_Manager));
+	}
 }
 
 void MainMenu::Intro() //Intro cinematic
@@ -175,6 +180,10 @@ void MainMenu::MouseInput()
 	if ((mouseX > 200 && mouseX < 620) && (mouseY > 350 && mouseY < 450)) { //New Game Button
 		cursorSprite->Draw(155 - abs((sin(timer * 0.04) * 15)), 350, SDL_FLIP_NONE);
 		hover = 0;
+		if (mouseState & SDL_BUTTON(SDL_BUTTON_LEFT) || input->IsKeyDown(SDL_SCANCODE_RETURN))
+		{
+			jumpToGameLoop = true;
+		}
 	}
 	else if ((mouseX > 200 && mouseX < 620) && (mouseY > 450 && mouseY < 550)) { //Options Button
 		cursorSprite->Draw(155 - abs((sin(timer * 0.04) * 15)), 450, SDL_FLIP_NONE);
@@ -188,7 +197,7 @@ void MainMenu::MouseInput()
 		cursorSprite->Draw(1090 + abs((sin(timer * 0.04) * 15)), 450, SDL_FLIP_HORIZONTAL);
 		hover = 4;
 
-		if (mouseState & SDL_BUTTON(SDL_BUTTON_LEFT) || input->keys[SDL_SCANCODE_RETURN]) { //Check for Click
+		if (mouseState & SDL_BUTTON(SDL_BUTTON_LEFT) || input->IsKeyDown(SDL_SCANCODE_RETURN)) { //Check for Click
 			exit = true;
 		}
 	}
@@ -233,4 +242,5 @@ void MainMenu::MenuIdle()
 	loadGameButton->Draw(650, 350);
 	optionsButton->Draw(200, 450);
 	exitButton->Draw(650, 450);
+
 }

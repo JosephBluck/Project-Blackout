@@ -1,6 +1,7 @@
 #pragma once
 #include "AnimSprite.h"
 #include "InputManager.h"
+#include <iostream>
 
 class Player : public AnimSprite
 {
@@ -12,6 +13,22 @@ public:
 	void Draw();
 private:
 	InputManager* input = NULL;
-	int checkXMove;
+	int xMove;
+	int checkXmove;
 	int checkYMove;
+
+	int ySpeed;
+	int xSpeed;
+
+	void UpdateXMovement();
+	void UpdateYMovement();
+
+	enum JumpState
+	{
+		Standing, Raising, Peak, Falling, Over
+	};
+	JumpState jumpstate;
+
+	int yMaxHeight;
+	int maxFallSpeed = 30;
 };

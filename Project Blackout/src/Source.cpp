@@ -23,10 +23,11 @@ int main(int arc, char* args[])
 	manager->AddState(new MainMenu(renderer, input, manager));
 
 	
-	while (!input->keys[SDL_SCANCODE_ESCAPE] && !manager->CheckStateExit()) {
+	while (!input->WasKeyPressed(SDL_SCANCODE_ESCAPE) && !manager->CheckStateExit()) {
 		SDL_PumpEvents(); //KEEP EVENTS UP TO DATE
 		SDL_RenderClear(renderer); //Clear Screen
 
+		input->UpdateKeyboard();
 		manager->UpdateState();
 		manager->DrawState();
 

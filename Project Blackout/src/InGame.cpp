@@ -18,20 +18,26 @@ InGame::~InGame()
 {
 	if (initSuccess)
 	{
+		delete player;
 	}
 }
 
 bool InGame::InitInGame()
 {
+	player = new Player(renderer, "resources\\sprites\\Characters\\Player\\Player_Filler.png", 400, 100, 116, 171, 1, 1, input);
+	if (!player)
+	{
+		return false;
+	}
 	return true;
 }
 
 void InGame::Update()
 {
-
+	player->Update();
 }
 
 void InGame::Draw()
 {
-
+	player->Draw();
 }
