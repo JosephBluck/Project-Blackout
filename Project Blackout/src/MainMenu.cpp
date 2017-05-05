@@ -103,7 +103,7 @@ void MainMenu::Update()
 void MainMenu::Intro()
 {
 	//Intro
-	if (timer < 120) {
+	if (timer < 120) { //"Bomb" drops
 		flash->Draw(630, (680.0f / 120.0f) * timer);
 	}
 	else if (timer < 180) {
@@ -127,7 +127,7 @@ void MainMenu::Intro()
 		title1->Draw(380, 20);
 		title2->Draw(1280 - ((timer - 360) * 16), 180);
 	}
-	else if (timer < 450) {
+	else if (timer < 450) { //Buttons appear on screen
 		newGameButton->Draw(200, 720 - ((timer - 420) * (370 / 30)));
 		loadGameButton->Draw(650, 720 - ((timer - 420) * (370 / 30)));
 		optionsButton->Draw(200, 720 - ((timer - 420) * (270 / 30)));
