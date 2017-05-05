@@ -60,9 +60,6 @@
     <ClCompile Include="src\AnimSprite.cpp">
       <Filter>Source Files\Core Classes</Filter>
     </ClCompile>
-    <ClCompile Include="src\TESTING.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\GSManager.cpp">
       <Filter>Source Files\GameStates</Filter>
     </ClCompile>
