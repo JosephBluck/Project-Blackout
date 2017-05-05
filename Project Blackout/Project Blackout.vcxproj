@@ -161,6 +161,7 @@
     <ClCompile Include="src\AnimSprite.cpp" />
     <ClCompile Include="src\FloatingParticle.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
+    <ClCompile Include="src\Jamietest.cpp" />
     <ClCompile Include="src\MainMenu.cpp" />
     <ClCompile Include="src\MathFunctions.cpp" />
     <ClCompile Include="src\SDLInit.cpp" />
