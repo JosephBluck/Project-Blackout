@@ -160,8 +160,9 @@
   <ItemGroup>
     <ClCompile Include="src\AnimSprite.cpp" />
     <ClCompile Include="src\FloatingParticle.cpp" />
+    <ClCompile Include="src\GameStates.cpp" />
+    <ClCompile Include="src\GSManager.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
-    <ClCompile Include="src\Jamietest.cpp" />
     <ClCompile Include="src\MainMenu.cpp" />
     <ClCompile Include="src\MathFunctions.cpp" />
     <ClCompile Include="src\SDLInit.cpp" />
@@ -173,6 +174,8 @@
   <ItemGroup>
     <ClInclude Include="include\AnimSprite.h" />
     <ClInclude Include="include\FloatingParticle.h" />
+    <ClInclude Include="include\GameStates.h" />
+    <ClInclude Include="include\GSManager.h" />
     <ClInclude Include="include\InputManager.h" />
     <ClInclude Include="include\MainMenu.h" />
     <ClInclude Include="include\MathFunctions.h" />
