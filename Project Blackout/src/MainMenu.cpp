@@ -1,13 +1,17 @@
 #include "MainMenu.h"
 
-MainMenu::MainMenu(SDL_Renderer* rendererInput, InputManager* _input)
+MainMenu::MainMenu(SDL_Renderer* rendererInput, InputManager* _input, GameStateManager* manager) :
+	GameState(manager, rendererInput)
 {
 	initSuccess = false;
-	renderer = rendererInput;
 	timer = 0;
 	exit = false;
 
 	input = _input; //Assign input manager for keyboard controls
+
+	stateName = "Main Menu";
+
+	InitMenu();
 }
 
 MainMenu::~MainMenu()
@@ -99,13 +103,13 @@ void MainMenu::Update()
 	}
 }
 
-void MainMenu::Intro()
+void MainMenu::Intro() //Intro cinematic
 {
 	//Intro
 	if (timer < 120) { //"Bomb" drops
 		flash->Draw(630, (680.0f / 120.0f) * timer);
 	}
-	else if (timer < 180) {
+	else if (timer < 180) { //Bomb explosion and screen turns to white
 		int scale = (timer - 120) * 40;
 		int flashColour = (255.0f / 60.0f) * (timer - 120);
 		flash->SetSize(scale, scale);
@@ -115,7 +119,7 @@ void MainMenu::Intro()
 	else if (timer < 240) {
 		//DELAY
 	}
-	else if (timer < 300) {
+	else if (timer < 300) { //Flash fades out
 		int flashColour = 255 - ((255.0f / 60.0f) * (timer - 240));
 		SDL_SetRenderDrawColor(renderer, flashColour, flashColour, flashColour, 0);
 	}
@@ -139,10 +143,10 @@ void MainMenu::Intro()
 	}
 
 	//SOUNDS
-	if (timer == 120) {
+	if (timer == 120) { //Explosion
 		menuSounds->PlaySound(2);
 	}
-	if (timer == 300) {
+	if (timer == 300) { //Music
 		menuSounds->PlayBGM(-1);
 	}
 
@@ -154,8 +158,7 @@ void MainMenu::MouseInput()
 	mouseState = SDL_GetMouseState(&mouseX, &mouseY); //Get the current position of the cursor and button state
 
 	//SDL_PumpEvents();
-	//New Game Button
-	if ((mouseX > 200 && mouseX < 620) && (mouseY > 350 && mouseY < 450)) {
+	if ((mouseX > 200 && mouseX < 620) && (mouseY > 350 && mouseY < 450)) { //New Game Button
 		cursorSprite->Draw(155 - abs((sin(timer * 0.04) * 15)), 350, SDL_FLIP_NONE);
 		hover = 0;
 	}

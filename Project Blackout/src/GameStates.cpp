@@ -2,8 +2,9 @@
 
 GameState::GameState(GameStateManager* _gsManager, SDL_Renderer* _renderer)
 {
-	this->GS_Manager = _gsManager;
-	this->renderer = _renderer;
+	GS_Manager = _gsManager;
+	renderer = _renderer;
+	exit = false;
 }
 
 void GameState::Update()

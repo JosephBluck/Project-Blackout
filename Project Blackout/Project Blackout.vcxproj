@@ -169,7 +169,6 @@
     <ClCompile Include="src\SoundManager.cpp" />
     <ClCompile Include="src\Source.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
-    <ClCompile Include="src\TESTING.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AnimSprite.h" />

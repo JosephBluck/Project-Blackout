@@ -19,19 +19,18 @@ int main(int arc, char* args[])
 	InputManager* input = new InputManager();
 
 	//MAINMENU
-	MainMenu* menu = NULL;
-	menu = new MainMenu(renderer, input);
+	GameStateManager* manager = new GameStateManager();
+	manager->AddState(new MainMenu(renderer, input, manager));
 
-	if (menu->InitMenu()) {
-		//MENU LOOP
-		while (!input->keys[SDL_SCANCODE_ESCAPE] && !menu->exit) {
-			SDL_PumpEvents(); //KEEP EVENTS UP TO DATE
-			SDL_RenderClear(renderer); //Clear Screen
+	
+	while (!input->keys[SDL_SCANCODE_ESCAPE] && !manager->CheckStateExit()) {
+		SDL_PumpEvents(); //KEEP EVENTS UP TO DATE
+		SDL_RenderClear(renderer); //Clear Screen
 
-			menu->Update();
+		manager->UpdateState();
+		manager->DrawState();
 
-			SDL_RenderPresent(renderer); //Present Frame
-		}
+		SDL_RenderPresent(renderer); //Present Frame
 	}
 
 	delete input; //Delete the input manager

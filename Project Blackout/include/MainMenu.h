@@ -6,20 +6,18 @@
 #include "FloatingParticle.h"
 #include "InputManager.h"
 #include "SoundManager.h"
+#include "GSManager.h"
 
-class MainMenu
+class MainMenu : public GameState
 {
 public:
-	MainMenu(SDL_Renderer* rendererInput, InputManager* _input);
+	MainMenu(SDL_Renderer* rendererInput, InputManager* _input, GameStateManager* manager);
 	~MainMenu();
 	bool InitMenu();
 
-	void Update();
-
-	bool exit; //Exit game boolean
+	void Update() override;
 
 private:
-	SDL_Renderer* renderer;
 	bool initSuccess;
 	bool startGame = false;
 
