@@ -55,6 +55,8 @@ bool MainMenu::InitMenu()
 	menuSounds->LoadSound(2, "resources\\sounds\\mainmenu\\explosion.wav");
 	menuSounds->LoadSound(3, "resources\\sounds\\mainmenu\\Begin.wav");
 
+	//TEXT TESTING DEBUG
+
 	//If assets haven't loaded, delete everything and return false on initialisation
 	if (!title1->isValid || !title2->isValid || !flash->isValid) {
 		std::cout << "Main menu failed to initialise!" << "\n";

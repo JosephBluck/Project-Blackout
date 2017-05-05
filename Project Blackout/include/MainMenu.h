@@ -1,6 +1,7 @@
 #pragma once
 #include "SDLInit.h"
 #include "Sprite.h"
+#include "AnimSprite.h"
 #include "MathFunctions.h"
 #include "FloatingParticle.h"
 #include "InputManager.h"
@@ -61,4 +62,7 @@ private:
 	
 	//PRIVATE FUNCTIONS
 	void MenuIdle();
+
+	//DEBUG TESTING
+	
 };
