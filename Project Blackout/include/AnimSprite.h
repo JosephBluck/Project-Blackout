@@ -8,13 +8,17 @@ public:
 	~AnimSprite();
 
 	//Animsprite function overrides
-	void Draw() override;
-	void Draw(int x, int y) override;
+	virtual void Draw() override;
+	virtual void Draw(int x, int y) override;
 	void Draw(int x, int y, SDL_RendererFlip flip) override;
 
 	void SetFrame(int _xFrame, int _yFrame);
 
-private:
+	//GET FUNCTIONS
+	int GetWidth() { return posRect.w; }
+	int GetHeight() { return posRect.h; }
+
+protected:
 	SDL_Rect blit;
 	int frameWidth;
 	int frameHeight;

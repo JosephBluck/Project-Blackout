@@ -30,6 +30,7 @@ MainMenu::~MainMenu()
 		delete exitButton;
 		delete cursorSprite;
 		delete  menuSounds;
+		delete monoFont;
 		delete textTest;
 	}
 }
@@ -82,6 +83,12 @@ bool MainMenu::InitMenu()
 		return false;
 	}
 
+	//TEXT TESTING
+	monoFont = new AnimSprite(renderer, "resources\\sprites\\text\\monofonto.png", 0, 0, 1222, 213, 26, 3);
+	textTest = new TextSprite(renderer, monoFont, 50, 50);
+	textTest->SetText("Ok, so get this... we now got NUMBE- and I mean like 123456789 of them c:");
+	monoFont->SetSize(15, 20);
+
 	menuSounds->PlaySound(1);
 	initSuccess = true; //Success
 	return true;
@@ -102,6 +109,9 @@ void MainMenu::Update()
 	else if (!startGame) {
 		MenuIdle();
 	}
+
+	//TEXT TESTING
+	textTest->Draw();
 }
 
 void MainMenu::Intro() //Intro cinematic

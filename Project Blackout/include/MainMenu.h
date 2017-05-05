@@ -7,6 +7,7 @@
 #include "InputManager.h"
 #include "SoundManager.h"
 #include "GSManager.h"
+#include "TextSprite.h"
 
 class MainMenu : public GameState
 {
@@ -61,4 +62,7 @@ private:
 	//PRIVATE FUNCTIONS
 	void MenuIdle();
 	
+	//TEXT TESTING
+	AnimSprite* monoFont = NULL;
+	TextSprite* textTest = NULL;
 };
