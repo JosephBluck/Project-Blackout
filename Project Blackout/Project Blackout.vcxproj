@@ -163,7 +163,6 @@
     <ClCompile Include="src\InputManager.cpp" />
     <ClCompile Include="src\MainMenu.cpp" />
     <ClCompile Include="src\MathFunctions.cpp" />
-    <ClCompile Include="src\Mytest.cpp" />
     <ClCompile Include="src\SDLInit.cpp" />
     <ClCompile Include="src\SoundManager.cpp" />
     <ClCompile Include="src\Source.cpp" />
