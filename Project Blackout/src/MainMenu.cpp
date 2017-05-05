@@ -11,7 +11,10 @@ MainMenu::MainMenu(SDL_Renderer* rendererInput, InputManager* _input, GameStateM
 
 	stateName = "Main Menu";
 
-	InitMenu();
+	if (!InitMenu())
+	{
+		exit = true;
+	}
 }
 
 MainMenu::~MainMenu()

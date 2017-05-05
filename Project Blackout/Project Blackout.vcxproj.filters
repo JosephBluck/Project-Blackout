@@ -31,6 +31,12 @@
     <Filter Include="Source Files\GameStates">
       <UniqueIdentifier>{75dec2d6-c95c-4b2d-984d-2d2f218b045e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game Objects">
+      <UniqueIdentifier>{a761b10d-893f-43de-b2a6-a1e94f016dd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects">
+      <UniqueIdentifier>{5b3b17fc-8fd9-4e37-a22a-534901149eb7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Source.cpp">
@@ -41,9 +47,6 @@
     </ClCompile>
     <ClCompile Include="src\Sprite.cpp">
       <Filter>Source Files\Core Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="src\MainMenu.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\MathFunctions.cpp">
       <Filter>Source Files</Filter>
@@ -66,6 +69,15 @@
     <ClCompile Include="src\GameStates.cpp">
       <Filter>Source Files\GameStates</Filter>
     </ClCompile>
+    <ClCompile Include="src\MainMenu.cpp">
+      <Filter>Source Files\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InGame.cpp">
+      <Filter>Source Files\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Player.cpp">
+      <Filter>Source Files\Game Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\SDLInit.h">
@@ -73,9 +85,6 @@
     </ClInclude>
     <ClInclude Include="include\Sprite.h">
       <Filter>Header Files\Core Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="include\MainMenu.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\MathFunctions.h">
       <Filter>Header Files</Filter>
@@ -97,6 +106,15 @@
     </ClInclude>
     <ClInclude Include="include\GSManager.h">
       <Filter>Header Files\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MainMenu.h">
+      <Filter>Header Files\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="include\InGame.h">
+      <Filter>Header Files\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Player.h">
+      <Filter>Header Files\Game Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
