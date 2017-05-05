@@ -60,7 +60,5 @@ private:
 	
 	//PRIVATE FUNCTIONS
 	void MenuIdle();
-
-	//DEBUG TESTING
 	
 };

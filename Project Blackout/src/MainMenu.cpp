@@ -33,6 +33,7 @@ MainMenu::~MainMenu()
 		delete exitButton;
 		delete cursorSprite;
 		delete  menuSounds;
+		delete textTest;
 	}
 }
 
