@@ -14,6 +14,7 @@ public:
 protected:
 	GameStateManager* GS_Manager;//GameStateManager used
 	SDL_Renderer* renderer;//SDL Renderer used
+
 	std::string stateName;//Game state name
 	const Uint8* key = SDL_GetKeyboardState(NULL);//Keyboard Input
 	int mouseX;//mouse position x
