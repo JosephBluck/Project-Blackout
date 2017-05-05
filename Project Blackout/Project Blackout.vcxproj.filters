@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Particle Classes">
       <UniqueIdentifier>{7e8066bc-b0f2-4836-a08a-6572d8d0c672}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameStates">
+      <UniqueIdentifier>{605a84ea-538b-4ff2-bebd-da135e1d6a3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameStates">
+      <UniqueIdentifier>{75dec2d6-c95c-4b2d-984d-2d2f218b045e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Source.cpp">
@@ -57,6 +63,12 @@
     <ClCompile Include="src\TESTING.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GSManager.cpp">
+      <Filter>Source Files\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameStates.cpp">
+      <Filter>Source Files\GameStates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\SDLInit.h">
@@ -82,6 +94,12 @@
     </ClInclude>
     <ClInclude Include="include\AnimSprite.h">
       <Filter>Header Files\Core Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameStates.h">
+      <Filter>Header Files\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GSManager.h">
+      <Filter>Header Files\GameStates</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

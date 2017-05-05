@@ -97,7 +97,6 @@ void MainMenu::Update()
 	else if (!startGame) {
 		MenuIdle();
 	}
-
 }
 
 void MainMenu::Intro()
