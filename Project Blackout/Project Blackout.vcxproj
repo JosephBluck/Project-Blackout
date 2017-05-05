@@ -162,9 +162,11 @@
     <ClCompile Include="src\FloatingParticle.cpp" />
     <ClCompile Include="src\GameStates.cpp" />
     <ClCompile Include="src\GSManager.cpp" />
+    <ClCompile Include="src\InGame.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
     <ClCompile Include="src\MainMenu.cpp" />
     <ClCompile Include="src\MathFunctions.cpp" />
+    <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\SDLInit.cpp" />
     <ClCompile Include="src\SoundManager.cpp" />
     <ClCompile Include="src\Source.cpp" />
@@ -176,9 +178,11 @@
     <ClInclude Include="include\FloatingParticle.h" />
     <ClInclude Include="include\GameStates.h" />
     <ClInclude Include="include\GSManager.h" />
+    <ClInclude Include="include\InGame.h" />
     <ClInclude Include="include\InputManager.h" />
     <ClInclude Include="include\MainMenu.h" />
     <ClInclude Include="include\MathFunctions.h" />
+    <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\SDLInit.h" />
     <ClInclude Include="include\SoundManager.h" />
     <ClInclude Include="include\Sprite.h" />
