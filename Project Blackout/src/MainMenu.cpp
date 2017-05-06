@@ -107,7 +107,7 @@ void MainMenu::Update()
 
 	if (jumpToGameLoop)
 	{
-		GS_Manager->ChangeState(new InGame(renderer, input, GS_Manager));
+		GS_Manager->ChangeState(new IntroState(renderer, GS_Manager, input));
 	}
 }
 
@@ -171,6 +171,7 @@ void MainMenu::MouseInput()
 		hover = 0;
 		if (mouseState & SDL_BUTTON(SDL_BUTTON_LEFT) || input->IsKeyDown(SDL_SCANCODE_RETURN))
 		{
+			Mix_HaltMusic();
 			jumpToGameLoop = true;
 		}
 	}

@@ -9,6 +9,7 @@
 #include "GSManager.h"
 #include "TextSprite.h"
 #include "InGame.h"
+#include "Intro.h"
 
 class MainMenu : public GameState
 {

@@ -164,6 +164,7 @@
     <ClCompile Include="src\GSManager.cpp" />
     <ClCompile Include="src\InGame.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
+    <ClCompile Include="src\Intro.cpp" />
     <ClCompile Include="src\MainMenu.cpp" />
     <ClCompile Include="src\MathFunctions.cpp" />
     <ClCompile Include="src\Player.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="include\FloatingParticle.h" />
     <ClInclude Include="include\GameStates.h" />
     <ClInclude Include="include\GSManager.h" />
+    <ClInclude Include="include\Intro.h" />
     <ClInclude Include="include\InGame.h" />
     <ClInclude Include="include\InputManager.h" />
     <ClInclude Include="include\MainMenu.h" />

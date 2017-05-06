@@ -71,6 +71,9 @@ void TextSprite::ConfigureType(int _typeDelay, Mix_Chunk* typeSound)
 
 void TextSprite::DrawMessage(int msgLength)
 {
+	paragraph = 0; //Reset paragraph to 0
+	lineReset = 0; //Variable used to return the drawing position to the start upon new paragraph
+
 	for (int i = 0; i < msgLength; i++) {
 		if (message[i] > 64 && message[i] < 91) { //CAPITAL LETTERS
 			textData->SetFrame(message[i] - 65, 0);
@@ -78,11 +81,25 @@ void TextSprite::DrawMessage(int msgLength)
 		else if (message[i] > 96 && message[i] < 123) { //LOWER CASE LETTERS
 			textData->SetFrame(message[i] - 97, 1);
 		}
-		else if (message[i] > 43 && message[i] < 59) { //PUNCTUATION AND NUMBERS
-			textData->SetFrame(message[i] - 44, 2);
+		else if (message[i] > 38 && message[i] < 59) { //PUNCTUATION AND NUMBERS
+			textData->SetFrame(message[i] - 39, 2);
 		}
-		else { textData->SetFrame(0, 3); } //SPACES
+		else if (message[i] == 126) { //PARAGRAPHS (Paragraphs are added using ~)
+			textData->SetFrame(0, 3);
+			paragraph++;
+			lineReset = i + 1;
+		}
+		else { textData->SetFrame(0, 3); } //SPACES (Also any invalid characters will register as spaces)
 
-		textData->Draw(xPos + (i * charWidth), yPos);
+		textData->Draw(xPos + ((i - lineReset) * charWidth), yPos + (paragraph * charHeight));
 	}
+}
+
+bool TextSprite::IsDone()
+{
+	if (typeCount == messageLength) {
+		return true;
+	}
+	
+	return false;
 }
