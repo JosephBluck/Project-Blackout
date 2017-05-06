@@ -7,13 +7,18 @@ public:
 	TextSprite(SDL_Renderer* rendererInput, AnimSprite* textSprite, int x, int y);
 	~TextSprite();
 
-	void Draw();
-	void SetText(char* text);
+	void Draw(); //Draw out the whole message at once
+	void Type(); //Type out the message one letter at a time (Must be ran as part of update loop)
+	void ConfigureType(int _typeDelay, Mix_Chunk* typeSound); //Set the sound for typing and configures the delay
+	void SetText(char* text); //Set the message to be typed out
 
 private:
 	AnimSprite* textData = NULL;
 	char* message = NULL;
 	int messageLength = 0;
+	Mix_Chunk* sound = NULL;
 
-	int xPos, yPos, charWidth, charHeight;
+	int xPos, yPos, charWidth, charHeight, typeDelay, typeCount, typeTimer;
+
+	void DrawMessage(int msgLength); //For decoding the message in varying lengths and drawing it
 };

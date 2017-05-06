@@ -64,8 +64,6 @@ bool MainMenu::InitMenu()
 	menuSounds->LoadSound(2, "resources\\sounds\\mainmenu\\explosion.wav");
 	menuSounds->LoadSound(3, "resources\\sounds\\mainmenu\\Begin.wav");
 
-	//TEXT TESTING DEBUG
-
 	//If assets haven't loaded, delete everything and return false on initialisation
 	if (!title1->isValid || !title2->isValid || !flash->isValid) {
 		std::cout << "Main menu failed to initialise!" << "\n";
@@ -85,12 +83,6 @@ bool MainMenu::InitMenu()
 
 		return false;
 	}
-
-	//TEXT TESTING
-	monoFont = new AnimSprite(renderer, "resources\\sprites\\text\\monofonto.png", 0, 0, 1222, 213, 26, 3);
-	textTest = new TextSprite(renderer, monoFont, 50, 50);
-	textTest->SetText("Ok, so get this... we now got NUMBE- and I mean like 123456789 of them c:");
-	monoFont->SetSize(15, 20);
 
 	menuSounds->PlaySound(1);
 	initSuccess = true; //Success
@@ -112,9 +104,6 @@ void MainMenu::Update()
 	else if (!startGame) {
 		MenuIdle();
 	}
-
-	//TEXT TESTING
-	textTest->Draw();
 
 	if (jumpToGameLoop)
 	{
