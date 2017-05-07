@@ -5,12 +5,14 @@ IntroState::IntroState(SDL_Renderer* _renderer, GameStateManager* _gsManager, In
 {
 	input = _input;
 
-	monoFont = new AnimSprite(renderer, "resources\\sprites\\text\\monofonto.png", 0, 0, 1222, 213, 26, 3);
-	monoFont->SetSize(15, 20);
-	introText = new TextSprite(renderer, monoFont, 20, 20);
+	monoFont = new AnimSprite(renderer, "resources\\sprites\\text\\monofonto.png", 0, 0, 1222, 213, 26, 3); //Load font sheet
+	monoFont->SetSize(15, 20); //Set font size
+	introText = new TextSprite(renderer, monoFont, 20, 20); //Create textsprite object
 
-	typeSound = Mix_LoadWAV("resources\\sounds\\voices\\Typing.wav");
-	introText->ConfigureType(5, typeSound);
+	introSounds = new SoundManager(1, "resources\\sounds\\BGM\\Motivated.mp3");
+	introSounds->LoadSound(0, "resources\\sounds\\voices\\typing.wav");
+	introSounds->PlayBGM(-1);
+	introText->ConfigureType(3, introSounds->GetChunk(0));
 
 	//Placeholder intro text
 	introText->SetText(
@@ -39,15 +41,15 @@ IntroState::~IntroState()
 {
 	delete monoFont;
 	delete introText;
-	delete typeSound;
+	delete introSounds;
 }
 
 void IntroState::Update()
 {
-	if (input->IsKeyDown(SDL_SCANCODE_RETURN)) { 
+	if (input->WasKeyPressed(SDL_SCANCODE_RETURN)) { //ENTER to progress and enter
 		exit = true; 
 		GS_Manager->ChangeState(new InGame(renderer, input, GS_Manager));
-	} //Enter to exit
+	}
 
 	introText->Type();
 }

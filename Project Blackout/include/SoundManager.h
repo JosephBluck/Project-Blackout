@@ -12,6 +12,8 @@ public:
 	bool PlaySound(int soundID);
 	bool PlayBGM(int loops);
 
+	Mix_Chunk* GetChunk(int soundID); //Return a pointer to an individual sound chunk
+
 private:
 	bool hasBGM;
 	int soundCount;

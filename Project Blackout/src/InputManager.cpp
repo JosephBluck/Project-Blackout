@@ -46,7 +46,7 @@ bool InputManager::IsKeyDown(SDL_Scancode _key)
 	}
 }
 
-bool InputManager::WasKeyReleaced(SDL_Scancode _key)
+bool InputManager::WasKeyReleased(SDL_Scancode _key)
 {
 	if (!currentKeys[_key] && prevFrameKeys[_key])
 	{

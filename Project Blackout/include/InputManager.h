@@ -12,7 +12,7 @@ public:
 
 	bool WasKeyPressed(SDL_Scancode _key);
 	bool IsKeyDown(SDL_Scancode _key);
-	bool WasKeyReleaced(SDL_Scancode _key);
+	bool WasKeyReleased(SDL_Scancode _key);
 private:
 	int numKeys;
 	Uint8* currentKeys;

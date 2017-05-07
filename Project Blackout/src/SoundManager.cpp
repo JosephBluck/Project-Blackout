@@ -83,3 +83,12 @@ bool SoundManager::PlayBGM(int loops)
 
 	return false;
 }
+
+Mix_Chunk* SoundManager::GetChunk(int soundID)
+{
+	if (soundID >= 0 && soundID < soundCount) { //Prevent array overloading
+		return &sounds[soundID];
+	}
+
+	return NULL; //If sound is invalid, return NULL
+}

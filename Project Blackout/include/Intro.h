@@ -17,5 +17,6 @@ private:
 	//Text setup
 	AnimSprite* monoFont = NULL;
 	TextSprite* introText = NULL;
-	Mix_Chunk* typeSound = NULL;
+	
+	SoundManager* introSounds = NULL;
 };

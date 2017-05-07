@@ -46,7 +46,7 @@ void Player::UpdateXMovement()
 void Player::UpdateYMovement()
 {
 	bool wasWPressed = input->WasKeyPressed(SDL_SCANCODE_W);
-	bool wasWReleaced = input->WasKeyReleaced(SDL_SCANCODE_W);
+	bool wasWReleaced = input->WasKeyReleased(SDL_SCANCODE_W);
 	
 
 	switch(jumpstate)
