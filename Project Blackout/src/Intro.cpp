@@ -16,7 +16,7 @@ IntroState::IntroState(SDL_Renderer* _renderer, GameStateManager* _gsManager, In
 
 	//Placeholder intro text
 	introText->SetText(
-		"The current year is 213x... you have been sitting in stasis since 2024 and on~"
+		"The current year is 213X... you have been sitting in stasis since 2024 and on~"
 		"this day, May 7th, you are finally released from your stasis.~"
 		"The world as you know it has changed... your life as you knew it is gone...~~"
 		"Your home... your friends... even your loved ones... swept away by catastrophe,~"

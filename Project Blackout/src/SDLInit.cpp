@@ -27,6 +27,8 @@ bool InitExtensions()
 		return false;
 	}
 
+	Mix_Volume(-1, 64);
+
 	return true;
 }
 
