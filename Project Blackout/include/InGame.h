@@ -16,8 +16,14 @@ public:
 private:
 	bool InitInGame();
 	bool initSuccess;
+	void UpdateCamera();
+
+	SDL_Rect Camera{ 0,0,1280,720 };
+	SDL_Rect screen{ 0, 0, 1280, 720 };
 
 	Player* player;
+	AnimSprite* background;
+	SDL_Texture* cameraRenderBuffer;
 
 	InputManager* input = NULL;//input manager
 };

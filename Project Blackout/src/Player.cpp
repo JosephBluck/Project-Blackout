@@ -5,6 +5,7 @@ Player::Player(SDL_Renderer* rendererInput, char* fileName, int x, int y, int w,
 {
 	input = _input;
 	xMove = x;
+	checkXmove = x;
 	checkYMove = y;
 	xSpeed = 10;
 
@@ -36,7 +37,7 @@ void Player::UpdateXMovement()
 		checkXmove = xMove - xSpeed;
 	}
 
-	if (checkXmove <= 1120 && checkXmove >= 0)
+	if (checkXmove <= 2444 && checkXmove >= 0)
 	{
 		xMove = checkXmove;
 	}
@@ -45,8 +46,8 @@ void Player::UpdateXMovement()
 
 void Player::UpdateYMovement()
 {
-	bool wasWPressed = input->WasKeyPressed(SDL_SCANCODE_W);
-	bool wasWReleaced = input->WasKeyReleased(SDL_SCANCODE_W);
+	bool wasWPressed = input->WasKeyPressed(SDL_SCANCODE_SPACE);
+	bool wasWReleaced = input->WasKeyReleased(SDL_SCANCODE_SPACE);
 	
 
 	switch(jumpstate)
@@ -115,6 +116,9 @@ void Player::UpdateYMovement()
 	}
 
 	checkYMove += ySpeed;
+	if (checkYMove > 500) {
+		checkYMove = 500;
+	}
 	posRect.y = checkYMove;
 }
 

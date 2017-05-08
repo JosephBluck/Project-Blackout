@@ -11,6 +11,8 @@ public:
 
 	void Update();
 	void Draw();
+
+	int GetXMove() { return xMove; }
 private:
 	InputManager* input = NULL;
 	int xMove;
