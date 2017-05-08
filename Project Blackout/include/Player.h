@@ -11,11 +11,19 @@ public:
 
 	void Update();
 	void Draw();
+
+	void UpdateCollisionMap(std::vector<SDL_Color>& _collisionMap, int colWidth, int colHeight);
+
 private:
+	std::vector<SDL_Color> collisionPixels; // store the collision pixel data in here
+	SDL_Rect collisionSize;
+
 	InputManager* input = NULL;
 	int xMove;
 	int checkXmove;
 	int checkYMove;
+
+	int fallDifference; //Calculation variable for snapping player to floor when falling or walking into walls
 
 	int ySpeed;
 	int xSpeed;
@@ -23,11 +31,14 @@ private:
 	void UpdateXMovement();
 	void UpdateYMovement();
 
+	bool CheckXCollision();
+	bool CheckYCollision();
+
 	enum JumpState
 	{
 		Standing, Raising, Peak, Falling, Over
 	};
-	JumpState jumpstate;
+	JumpState jumpstate; 
 
 	int yMaxHeight;
 	int maxFallSpeed = 30;

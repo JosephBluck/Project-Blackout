@@ -15,6 +15,8 @@ public:
 	void SetFrame(int _xFrame, int _yFrame);
 
 	//GET FUNCTIONS
+	int GetX() { return posRect.x; }
+	int GetY() { return posRect.y; }
 	int GetWidth() { return posRect.w; }
 	int GetHeight() { return posRect.h; }
 

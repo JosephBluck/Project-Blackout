@@ -84,6 +84,9 @@
     <ClCompile Include="src\Intro.cpp">
       <Filter>Source Files\GameStates</Filter>
     </ClCompile>
+    <ClCompile Include="src\BitmapSprite.cpp">
+      <Filter>Source Files\Core Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\SDLInit.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="include\Intro.h">
       <Filter>Header Files\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BitmapSprite.h">
+      <Filter>Header Files\Core Classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

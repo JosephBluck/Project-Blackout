@@ -159,6 +159,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\AnimSprite.cpp" />
+    <ClCompile Include="src\BitmapSprite.cpp" />
     <ClCompile Include="src\FloatingParticle.cpp" />
     <ClCompile Include="src\GameStates.cpp" />
     <ClCompile Include="src\GSManager.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="include\FloatingParticle.h" />
     <ClInclude Include="include\GameStates.h" />
     <ClInclude Include="include\GSManager.h" />
+    <ClInclude Include="include\BitmapSprite.h" />
     <ClInclude Include="include\Intro.h" />
     <ClInclude Include="include\InGame.h" />
     <ClInclude Include="include\InputManager.h" />

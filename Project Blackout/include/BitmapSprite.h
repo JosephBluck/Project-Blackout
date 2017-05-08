@@ -1,24 +1,24 @@
 #pragma once
 #include "SDLInit.h"
 
-class Sprite
+class BitmapSprite
 {
 public:
-	Sprite(SDL_Renderer* rendererInput, char* fileName, int x, int y, int w, int h);
-	~Sprite();
+	BitmapSprite(SDL_Renderer* rendererInput, char* fileName, int x, int y, int w, int h);
+	~BitmapSprite();
 
 	virtual void Draw();
 	virtual void Draw(int x, int y);
 	virtual void Draw(int x, int y, SDL_RendererFlip flip);
 
 	void SetSize(int w, int h);
-	SDL_Rect& GetRect() { return posRect; }
 
 	bool isValid;
 
 protected:
 	SDL_Renderer* renderer;
 	SDL_Rect posRect;
+	SDL_Surface* loadImage;
 	SDL_Texture* tex;
 	SDL_RendererFlip isFlip;
 };

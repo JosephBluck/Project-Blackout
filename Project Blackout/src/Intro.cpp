@@ -50,6 +50,7 @@ void IntroState::Update()
 		exit = true; 
 		GS_Manager->ChangeState(new InGame(renderer, input, GS_Manager));
 	}
-
-	introText->Type();
+	else{
+		introText->Type();
+	}
 }
