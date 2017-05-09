@@ -41,7 +41,7 @@ void Player::UpdateXMovement()
 		collisionCorrection = -1;
 	}
 
-	if (checkXmove <= 1120 && checkXmove >= 0)
+	if (checkXmove <= 2445 && checkXmove >= 0)
 	{
 		xMove = checkXmove;
 	}
