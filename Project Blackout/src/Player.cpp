@@ -18,8 +18,8 @@ Player::~Player()
 
 void Player::Update()
 {
-	UpdateXMovement();
 	UpdateYMovement();
+	UpdateXMovement();
 }
 
 void Player::UpdateXMovement()
@@ -28,22 +28,41 @@ void Player::UpdateXMovement()
 
 	bool dKeyPressed = input->IsKeyDown(SDL_SCANCODE_D);
 	bool aKeyPressed = input->IsKeyDown(SDL_SCANCODE_A);
-	int collisionCorrection = 0; //Controls the direction of positional correction on the x-axis
+
+	bool xCollision = false;
+	bool isMovingX = false;
+	isMovingLeft = false;
 
 	if (dKeyPressed)
 	{
+		isMovingX = true;
 		checkXmove = xMove + xSpeed;
 		collisionCorrection = 1;
+		xCollision = CheckXCollision();
 	}
-	if (aKeyPressed)
+	else if (aKeyPressed)
 	{
+		isMovingX = true;
+		isMovingLeft = true;
 		checkXmove = xMove - xSpeed;
 		collisionCorrection = -1;
+		xCollision = CheckXCollision();
 	}
 
-	if (checkXmove <= 2445 && checkXmove >= 0)
+	if (checkXmove <= 2445 && checkXmove >= 0 && !xCollision)
 	{
 		xMove = checkXmove;
+	}
+	else {
+		checkXmove = xMove;
+		if (isMovingX) {
+			if (isMovingLeft) {
+				xMove -= fallDifference;
+			}
+			else {
+				xMove += fallDifference;
+			}
+		}
 	}
 
 	posRect.x = xMove;
@@ -157,7 +176,15 @@ void Player::UpdateCollisionMap(std::vector<SDL_Color>& _collisionMap, int colWi
 
 bool Player::CheckXCollision()
 {
-	int xOffset = GetX() + xSpeed;
+	int xOffset;
+
+	if (isMovingLeft) {
+		xOffset = GetX() - xSpeed;
+	}
+	else {
+		xOffset = GetX() + xSpeed;
+	}
+
 	int yOffset = GetY();
 
 	SDL_Color col;
@@ -171,7 +198,19 @@ bool Player::CheckXCollision()
 			col = collisionPixels[checkPixel];
 
 			if (col.r == 0) {
-				fallDifference = checkX - (GetX() + GetWidth());
+
+				if (!isMovingLeft) {
+					fallDifference = checkX - (GetX() + GetWidth());
+				}
+				else {
+					fallDifference = checkX - (GetX() + GetWidth());
+
+					while (fallDifference < -xSpeed) {
+						fallDifference += xSpeed;
+					}
+				}
+
+				std::cout << "CORRECTING BY: " << fallDifference << "\n";
 
 				return true;
 			}

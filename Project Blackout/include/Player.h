@@ -23,7 +23,9 @@ private:
 	int checkXmove;
 	int checkYMove;
 
+	int collisionCorrection = 0; //Controls the direction of positional correction on the x-axis
 	int fallDifference; //Calculation variable for snapping player to floor when falling or walking into walls
+	bool isMovingLeft;
 
 	int ySpeed;
 	int xSpeed;
