@@ -6,7 +6,7 @@ InGame::InGame(SDL_Renderer* _renderer, InputManager* _input, GameStateManager* 
 	input = _input;
 	bool initSuccess = false;
 	
-	collisionMap = new Sprite(renderer, "resources\\maps\\TestLevel\\ScreenOVERLAY.png", 0, 0, 1280, 720);
+	collisionMap = new Sprite(renderer, "resources\\maps\\TestLevel\\ScreenOverlayScroll.png", 0, 0, 2560, 720);
 
 	stateName = "In Game";
 
@@ -30,29 +30,46 @@ InGame::~InGame()
 
 bool InGame::InitInGame()
 {
-	player = new Player(renderer, "resources\\sprites\\Characters\\Player\\Player_Filler.png", 400, 100, 116, 171, 1, 1, input);
+	player = new Player(renderer, "resources\\sprites\\Characters\\Player\\Player_Filler.png", 582, 100, 116, 171, 1, 1, input);
 	if (!player)
 	{
 		return false;
 	}
-
+	cameraRenderBuffer = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 2560, 720);
 	//GIVE PLAYER COLLISION DATA
-	LoadCollisionImage("resources\\maps\\TestLevel\\Screen1.bmp");
-	player->UpdateCollisionMap(collisionPixels, 1280, 720);
+	LoadCollisionImage("resources\\maps\\TestLevel\\MapScrollTest.bmp");
+	player->UpdateCollisionMap(collisionPixels, 2560, 720);
 
 	return true;
 }
 
 void InGame::Update()
 {
-	collisionMap->Draw(0, 0);
 	player->Update();
+	UpdateCamera();
+}
+
+void InGame::UpdateCamera()
+{
+	camera.x = player->GetX() - 582;
+	if (camera.x > 1280)
+	{
+		camera.x = 1280;
+	}
+	if (camera.x < 0)
+	{
+		camera.x = 0;
+	}
 }
 
 void InGame::Draw()
 {
+	SDL_SetRenderTarget(renderer, cameraRenderBuffer);
+	SDL_RenderClear(renderer);
 	player->Draw();
 	collisionMap->Draw();
+	SDL_SetRenderTarget(renderer, NULL);
+	SDL_RenderCopy(renderer, cameraRenderBuffer, &camera, &screen);
 }
 
 
