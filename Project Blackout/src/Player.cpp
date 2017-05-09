@@ -144,8 +144,6 @@ void Player::UpdateYMovement()
 void Player::Draw()
 {
 	AnimSprite::Draw();
-	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
-	SDL_RenderDrawRect(renderer, &GetRect());
 }
 
 void Player::UpdateCollisionMap(std::vector<SDL_Color>& _collisionMap, int colWidth, int colHeight)

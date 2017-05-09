@@ -6,7 +6,7 @@ InGame::InGame(SDL_Renderer* _renderer, InputManager* _input, GameStateManager* 
 	input = _input;
 	bool initSuccess = false;
 	
-	collisionMap = new Sprite(renderer, "resources\\maps\\TestLevel\\ScreenOVERLAY.png", 0, 0, 1280, 720);
+	collisionMap = new Sprite(renderer, "resources\\maps\\TestLevel\\screen1.png", 0, 0, 1280, 720);
 
 	stateName = "In Game";
 

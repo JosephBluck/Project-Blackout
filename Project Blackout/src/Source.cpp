@@ -25,7 +25,7 @@ int main(int arc, char* args[])
 	
 	while (!input->WasKeyPressed(SDL_SCANCODE_ESCAPE) && !manager->CheckStateExit()) {
 		SDL_PumpEvents(); //KEEP EVENTS UP TO DATE
-		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 		SDL_RenderClear(renderer); //Clear Screen
 
 		input->UpdateKeyboard();
