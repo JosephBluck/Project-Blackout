@@ -25,6 +25,7 @@ InGame::~InGame()
 		delete player;
 	}
 
+	SDL_DestroyTexture(cameraRenderBuffer);
 	delete collisionMap;
 }
 
