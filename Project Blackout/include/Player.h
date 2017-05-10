@@ -24,7 +24,8 @@ private:
 	int checkYMove;
 
 	int collisionCorrection = 0; //Controls the direction of positional correction on the x-axis
-	int fallDifference; //Calculation variable for snapping player to floor when falling or walking into walls
+	int yFallDifference; //Calculation variable for snapping player to floor when falling or walking into walls
+	int xFallDifference;
 	bool isMovingLeft;
 
 	int ySpeed;
@@ -35,6 +36,9 @@ private:
 
 	bool CheckXCollision();
 	bool CheckYCollision();
+	bool CheckPixelData(int _offset, int _offset2, char axisBeingChecked);
+	SDL_Color col;
+	int checkPixel;
 
 	enum JumpState
 	{
