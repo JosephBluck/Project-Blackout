@@ -57,10 +57,10 @@ void Player::UpdateXMovement()
 		checkXmove = xMove;
 		if (isMovingX) {
 			if (isMovingLeft) {
-				xMove -= xFallDifference;
+				//xMove -= xFallDifference;
 			}
 			else {
-				xMove += xFallDifference;
+				//xMove += xFallDifference;
 			}
 		}
 	}
@@ -178,24 +178,24 @@ bool Player::CheckXCollision()
 {
 	int xOffset;
 	int yOffset = GetY();
-	//for (int i = 0; i < 10; i++)
-	//{
+	for (int i = 0; i < 10; i++)
+	{
 		if (isMovingLeft) {
-			xOffset = GetX() - xSpeed;
+			xOffset = GetX() - xSpeed - i;
 		}
 		else {
-			xOffset = GetX() + xSpeed;
+			xOffset = GetX() + xSpeed + i;
 		}
 
 		SDL_Color col;
 		int checkPixel;
 
-		if (CheckPixelData(yOffset, xOffset, 'x'))
+		if (!CheckPixelData(yOffset, xOffset, 'x'))
 		{
-			return true;
+			return false;
 		}
-	return false;
-	//}
+	}
+	return true;
 	/*for (int checkY = yOffset; checkY < yOffset + GetHeight(); checkY++)
 	{
 		for (int checkX = xOffset; checkX < xOffset + GetWidth(); checkX++)
