@@ -37,35 +37,21 @@ void Player::UpdateXMovement()
 	{
 		isMovingX = true;
 		checkXmove = xMove + xSpeed;
-		collisionCorrection = 1;
-		xCollision = CheckXCollision();
 	}
 	else if (aKeyPressed)
 	{
 		isMovingX = true;
 		isMovingLeft = true;
 		checkXmove = xMove - xSpeed;
-		collisionCorrection = -1;
-		xCollision = CheckXCollision();
 	}
-
-	if (checkXmove <= 2445 && checkXmove >= 0 && !xCollision)
+	if (isMovingX && checkXmove <= 2445 && checkXmove >= 0)
 	{
-		xMove = checkXmove;
-	}
-	else {
-		checkXmove = xMove;
-		if (isMovingX) {
-			if (isMovingLeft) {
-				//xMove -= xFallDifference;
-			}
-			else {
-				//xMove += xFallDifference;
-			}
-		}
+		xCollision = CheckXCollision();
+
 	}
 
 	posRect.x = xMove;
+	//std::cout << posRect.x << "\n";
 }
 
 void Player::UpdateYMovement()
@@ -181,47 +167,23 @@ bool Player::CheckXCollision()
 	for (int i = 0; i < 10; i++)
 	{
 		if (isMovingLeft) {
-			xOffset = GetX() - xSpeed - i;
+			xOffset = GetX() - (xSpeed - i);
 		}
 		else {
-			xOffset = GetX() + xSpeed + i;
+			xOffset = GetX() + (xSpeed - i);
 		}
 
 		SDL_Color col;
 		int checkPixel;
-
 		if (!CheckPixelData(yOffset, xOffset, 'x'))
 		{
+			xMove = xOffset;
+			std::cout << "no colide in x\n";
 			return false;
 		}
 	}
+	std::cout << "colide in x\n";
 	return true;
-	/*for (int checkY = yOffset; checkY < yOffset + GetHeight(); checkY++)
-	{
-		for (int checkX = xOffset; checkX < xOffset + GetWidth(); checkX++)
-		{
-			checkPixel = (checkY * collisionSize.w) + checkX;
-			col = collisionPixels[checkPixel];
-
-			if (col.r == 0) {
-
-				if (!isMovingLeft) {
-					xFallDifference = checkX - (GetX() + GetWidth());
-				}
-				else {
-					xFallDifference = checkX - (GetX() + GetWidth());
-
-					while (xFallDifference < -xSpeed) {
-						xFallDifference += xSpeed;
-					}
-				}
-
-				std::cout << "CORRECTING BY: " << xFallDifference << "\n";
-
-				return true;
-			}
-		}
-	}*/
 }
 
 bool Player::CheckYCollision()
@@ -240,23 +202,6 @@ bool Player::CheckYCollision()
 	{
 		return false;
 	}
-
-	/*for (int checkY = yOffset; checkY < yOffset + GetHeight(); checkY++)
-	{
-		for (int checkX = xOffset; checkX < xOffset + GetWidth(); checkX++)
-		{
-			checkPixel = (checkY * collisionSize.w) + checkX;
-			col = collisionPixels[checkPixel];
-
-			if (col.r == 0) {
-				fallDifference = checkY - (GetY() + GetHeight());
-
-				return true;
-			}
-		}
-	}
-
-	return false;*/
 }
 
 bool Player::CheckPixelData(int _offset, int _offset2, char axisBeingChecked)
@@ -285,8 +230,7 @@ bool Player::CheckPixelData(int _offset, int _offset2, char axisBeingChecked)
 							xFallDifference += xSpeed;
 						}
 					}
-
-					std::cout << "CORRECTING BY: " << xFallDifference << "\n";
+					//std::cout << "CORRECTING BY: " << xFallDifference << "\n";
 				}
 				return true;
 			}
