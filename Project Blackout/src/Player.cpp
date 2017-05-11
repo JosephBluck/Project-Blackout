@@ -18,8 +18,8 @@ Player::~Player()
 
 void Player::Update()
 {
-	UpdateYMovement();
 	UpdateXMovement();
+	UpdateYMovement();
 }
 
 void Player::UpdateXMovement()
@@ -143,7 +143,7 @@ void Player::UpdateYMovement()
 	{
 		if (ySpeed != maxFallSpeed)
 		{
-			ySpeed += 6;
+			ySpeed += 3;
 		}
 		break;
 	}
