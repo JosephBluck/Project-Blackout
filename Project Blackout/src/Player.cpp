@@ -18,8 +18,8 @@ Player::~Player()
 
 void Player::Update()
 {
-	UpdateXMovement();
 	UpdateYMovement();
+	UpdateXMovement();
 }
 
 void Player::UpdateXMovement()
@@ -177,28 +177,25 @@ void Player::UpdateCollisionMap(std::vector<SDL_Color>& _collisionMap, int colWi
 bool Player::CheckXCollision()
 {
 	int xOffset;
-
-	if (isMovingLeft) {
-		xOffset = GetX() - xSpeed;
-	}
-	else {
-		xOffset = GetX() + xSpeed;
-	}
-
 	int yOffset = GetY();
+	//for (int i = 0; i < 10; i++)
+	//{
+		if (isMovingLeft) {
+			xOffset = GetX() - xSpeed;
+		}
+		else {
+			xOffset = GetX() + xSpeed;
+		}
 
-	SDL_Color col;
-	int checkPixel;
+		SDL_Color col;
+		int checkPixel;
 
-	if (CheckPixelData(yOffset, xOffset, 'x'))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-
+		if (CheckPixelData(yOffset, xOffset, 'x'))
+		{
+			return true;
+		}
+	return false;
+	//}
 	/*for (int checkY = yOffset; checkY < yOffset + GetHeight(); checkY++)
 	{
 		for (int checkX = xOffset; checkX < xOffset + GetWidth(); checkX++)
