@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Externals\GLM;$(solutionDir)Externals\SDL\SDL2\include;$(solutionDir)Externals\SDL\SDL_Mixer\include;$(solutionDir)Externals\SDL\SDL_Image\include;$(solutionDir)Project Blackout\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Externals;$(SolutionDir)Externals\GLM;$(solutionDir)Externals\SDL\SDL2\include;$(solutionDir)Externals\SDL\SDL_Mixer\include;$(solutionDir)Externals\SDL\SDL_Image\include;$(solutionDir)Project Blackout\include;$(IncludePath);</IncludePath>
     <LibraryPath>$(SolutionDir)Externals\SDL\SDL2\lib\x86;$(SolutionDir)Externals\SDL\SDL_Image\lib\x86;$(SolutionDir)Externals\SDL\SDL_Mixer\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -81,7 +81,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Externals\GLM;$(solutionDir)Externals\SDL\SDL2\include;$(solutionDir)Externals\SDL\SDL_Mixer\include;$(solutionDir)Externals\SDL\SDL_Image\include;$(solutionDir)Project Blackout\include;$(IncludePath);$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>$(SolutionDir)Externals;$(SolutionDir)Externals\GLM;$(solutionDir)Externals\SDL\SDL2\include;$(solutionDir)Externals\SDL\SDL_Mixer\include;$(solutionDir)Externals\SDL\SDL_Image\include;$(solutionDir)Project Blackout\include;$(IncludePath);$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>$(SolutionDir)Externals\SDL\SDL2\lib\x86;$(SolutionDir)Externals\SDL\SDL_Image\lib\x86;$(SolutionDir)Externals\SDL\SDL_Mixer\lib\x86;$(LibraryPath);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -166,6 +166,7 @@
     <ClCompile Include="src\InGame.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
     <ClCompile Include="src\Intro.cpp" />
+    <ClCompile Include="src\LodePNG.cpp" />
     <ClCompile Include="src\MainMenu.cpp" />
     <ClCompile Include="src\MathFunctions.cpp" />
     <ClCompile Include="src\Paused.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="include\Intro.h" />
     <ClInclude Include="include\InGame.h" />
     <ClInclude Include="include\InputManager.h" />
+    <ClInclude Include="include\LodePNG.h" />
     <ClInclude Include="include\MainMenu.h" />
     <ClInclude Include="include\MathFunctions.h" />
     <ClInclude Include="include\Paused.h" />

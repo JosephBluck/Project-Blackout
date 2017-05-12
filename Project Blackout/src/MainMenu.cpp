@@ -172,6 +172,7 @@ void MainMenu::MouseInput()
 		if (mouseState & SDL_BUTTON(SDL_BUTTON_LEFT) || input->IsKeyDown(SDL_SCANCODE_RETURN))
 		{
 			Mix_HaltMusic();
+
 			jumpToGameLoop = true;
 		}
 	}

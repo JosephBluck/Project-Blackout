@@ -150,7 +150,7 @@ void Player::Draw()
 	AnimSprite::Draw();
 }
 
-void Player::UpdateCollisionMap(std::vector<SDL_Color>& _collisionMap, int colWidth, int colHeight)
+void Player::UpdateCollisionMap(std::vector<PixelData>& _collisionMap, int colWidth, int colHeight)
 {
 	collisionPixels = _collisionMap;
 	collisionSize.w = colWidth;
@@ -172,7 +172,7 @@ bool Player::CheckXCollision()
 			xOffset = GetX() + (xSpeed - i);
 		}
 
-		SDL_Color col;
+		PixelData col;
 		int checkPixel;
 		if (!CheckPixelData(yOffset, xOffset, 'x'))
 		{
@@ -188,7 +188,7 @@ bool Player::CheckYCollision()
 	int xOffset = GetX();
 	int yOffset = GetY() + ySpeed;
 
-	SDL_Color col;
+	PixelData col;
 	int checkPixel;
 
 	if (CheckPixelData(yOffset, xOffset, 'y'))

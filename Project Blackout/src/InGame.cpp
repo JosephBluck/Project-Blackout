@@ -38,7 +38,7 @@ bool InGame::InitInGame()
 	}
 	cameraRenderBuffer = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 2560, 720);
 	//GIVE PLAYER COLLISION DATA
-	LoadCollisionImage("resources\\maps\\TestLevel\\MapScrollTest.bmp");
+	LoadCollisionImage("resources\\maps\\TestLevel\\MapScrollTest.png", 2560, 720);
 	player->UpdateCollisionMap(collisionPixels, 2560, 720);
 
 	return true;
@@ -79,55 +79,28 @@ void InGame::Draw()
 }
 
 
-void InGame::LoadCollisionImage(char* _filePath)
+void InGame::LoadCollisionImage(char* _filePath, int _w, int _h)
 {
-	SDL_PixelFormat *fmt;
-	SDL_Surface *collisionSurface;
-	Uint32 temp;
-	Uint32* pixels;
+	//PNG MODE GOOOOOO
+	unsigned int error;
+	unsigned char* imageData = nullptr;
+	unsigned int w = _w;
+	unsigned int h = _h;
 
-	collisionSurface = SDL_LoadBMP(_filePath);
-	collisionSize.w = collisionSurface->w;
-	collisionSize.h = collisionSurface->h;
-
-	fmt = collisionSurface->format;
-	SDL_LockSurface(collisionSurface);
-	pixels = (Uint32*)collisionSurface->pixels;
-	SDL_UnlockSurface(collisionSurface);
+	error = lodepng_decode32_file(&imageData, &w, &h, _filePath);
 
 	// store each pixel as an SDL_Color in a std::vec
-	for (int i = 0; i < collisionSurface->w * collisionSurface->h; i++)
+	for (int i = 0; i < w * h; i++)
 	{
-		SDL_Color col;
+		PixelData col;
 
-		/* Get Red component */
-		temp = pixels[i] & fmt->Rmask;  /* Isolate red component */
-		temp = temp >> fmt->Rshift; /* Shift it down to 8-bit */
-		temp = temp << fmt->Rloss;  /* Expand to a full 8-bit number */
-		col.r = (Uint8)temp;
-
-		/* Get Green component */
-		temp = pixels[i] & fmt->Gmask;  /* Isolate green component */
-		temp = temp >> fmt->Gshift; /* Shift it down to 8-bit */
-		temp = temp << fmt->Gloss;  /* Expand to a full 8-bit number */
-		col.g = (Uint8)temp;
-
-		/* Get Blue component */
-		temp = pixels[i] & fmt->Bmask;  /* Isolate blue component */
-		temp = temp >> fmt->Bshift; /* Shift it down to 8-bit */
-		temp = temp << fmt->Bloss;  /* Expand to a full 8-bit number */
-		col.b = (Uint8)temp;
-
-		/* Get Alpha component */
-		temp = pixels[i] & fmt->Amask;  /* Isolate alpha component */
-		temp = temp >> fmt->Ashift; /* Shift it down to 8-bit */
-		temp = temp << fmt->Aloss;  /* Expand to a full 8-bit number */
-		col.a = (Uint8)temp;
+		col.r = (int)imageData[(i * 4)];
+		col.g = (int)imageData[(i * 4 + 1)];
+		col.b = (int)imageData[(i * 4 + 2)];
+		//col.a = (int)imageData[(i * 4 + 3)]; //DISREGARDING ALPHA CHANNEL
 
 		collisionPixels.push_back(col);
 	}
-
-	SDL_FreeSurface(collisionSurface);
 }
 
 void InGame::DrawCollisionMap()

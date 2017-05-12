@@ -90,6 +90,9 @@
     <ClCompile Include="src\Paused.cpp">
       <Filter>Source Files\GameStates</Filter>
     </ClCompile>
+    <ClCompile Include="src\LodePNG.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\SDLInit.h">
@@ -139,6 +142,9 @@
     </ClInclude>
     <ClInclude Include="include\Paused.h">
       <Filter>Header Files\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LodePNG.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

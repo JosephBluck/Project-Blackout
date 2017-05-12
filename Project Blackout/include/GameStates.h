@@ -1,6 +1,8 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string>
+#include <iostream>
+
 #ifndef GAMESTATE
 #define GAMESTATE
 
@@ -10,6 +12,7 @@ class GameState
 {
 public:
 	GameState(GameStateManager* _gsManager, SDL_Renderer* _renderer);//initialise GameStates
+	~GameState();
 
 	virtual void Update();
 	virtual void Draw();

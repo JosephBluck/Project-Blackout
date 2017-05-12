@@ -6,6 +6,7 @@
 #include <chrono>
 #include <vector>
 #include <algorithm>
+#include "LodePNG.h"
 
 /* THIS FILE IS FOR LOADING AND INITIALISING
 SDL2 AND ALL NECESSARY EXTENTIONS, ERRORS ARE
@@ -15,3 +16,10 @@ bool InitSDL();
 bool InitExtensions();
 bool InitRenderer(SDL_Window* &window, SDL_Renderer* &renderer);
 //bool CheckExit(); //Old exit function, currently deprecated
+
+struct PixelData
+{
+	Uint8 r;
+	Uint8 g;
+	Uint8 b;
+};

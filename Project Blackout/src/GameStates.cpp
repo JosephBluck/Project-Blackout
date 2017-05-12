@@ -7,6 +7,11 @@ GameState::GameState(GameStateManager* _gsManager, SDL_Renderer* _renderer)
 	exit = false;
 }
 
+GameState::~GameState()
+{
+	std::cout << "THE BASE GAMESTATE CLASS HAS KAPUT!\n";
+}
+
 void GameState::Update()
 {
 	//will be filled in the real states

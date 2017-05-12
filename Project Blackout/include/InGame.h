@@ -1,4 +1,5 @@
 #pragma once
+#include "SDLInit.h"
 #include "GameStates.h"
 #include "GSManager.h"
 #include"InputManager.h"
@@ -29,12 +30,12 @@ private:
 
 	InputManager* input = NULL;//input manager
 
-	void LoadCollisionImage(char* _filePath);
+	void LoadCollisionImage(char* _filePath, int _w, int _h);
 
 	Sprite* image;		  // sprite that this bkg uses
 	Sprite* collisionMap; // collision image that this bkg uses
 
-	std::vector<SDL_Color> collisionPixels; // store the collision pixel data in here
+	std::vector<PixelData> collisionPixels; // store the collision pixel data in here
 	SDL_Rect collisionSize;					// size of collision map
 	bool showCollisionMap;					// for debug purposes (press C & V to show / hide)
 

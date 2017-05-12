@@ -12,10 +12,10 @@ public:
 	void Update();
 	void Draw();
 
-	void UpdateCollisionMap(std::vector<SDL_Color>& _collisionMap, int colWidth, int colHeight);
+	void UpdateCollisionMap(std::vector<PixelData>& _collisionMap, int colWidth, int colHeight);
 
 private:
-	std::vector<SDL_Color> collisionPixels; // store the collision pixel data in here
+	std::vector<PixelData> collisionPixels; // store the collision pixel data in here
 	SDL_Rect collisionSize;
 
 	InputManager* input = NULL;
@@ -37,7 +37,7 @@ private:
 	bool CheckXCollision();
 	bool CheckYCollision();
 	bool CheckPixelData(int _offset, int _offset2, char axisBeingChecked);
-	SDL_Color col;
+	PixelData col;
 	int checkPixel;
 
 	enum JumpState

@@ -16,10 +16,7 @@ Paused::Paused(SDL_Renderer* _renderer, InputManager* _input, GameStateManager* 
 
 Paused::~Paused()
 {
-	if (initSuccess)
-	{
-		delete pausedScreen;
-	}
+
 }
 
 bool Paused::InitPaused()
@@ -36,6 +33,7 @@ void Paused::Update()
 {
 	if (input->WasKeyPressed(SDL_SCANCODE_P) && !input->IsKeyDown(SDL_SCANCODE_P))
 	{
+		delete pausedScreen;
 		GS_Manager->RemoveLastState();
 	}
 }
