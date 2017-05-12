@@ -47,11 +47,8 @@ void Player::UpdateXMovement()
 	if (isMovingX && checkXmove <= 2445 && checkXmove >= 0)
 	{
 		xCollision = CheckXCollision();
-
 	}
-
 	posRect.x = xMove;
-	//std::cout << posRect.x << "\n";
 }
 
 void Player::UpdateYMovement()
@@ -178,11 +175,9 @@ bool Player::CheckXCollision()
 		if (!CheckPixelData(yOffset, xOffset, 'x'))
 		{
 			xMove = xOffset;
-			std::cout << "no colide in x\n";
 			return false;
 		}
 	}
-	std::cout << "colide in x\n";
 	return true;
 }
 
@@ -217,20 +212,6 @@ bool Player::CheckPixelData(int _offset, int _offset2, char axisBeingChecked)
 				if (axisBeingChecked == 'y')
 				{
 					yFallDifference = checkY - (GetY() + GetHeight());
-				}
-				if (axisBeingChecked == 'x')
-				{
-					if (!isMovingLeft) {
-						xFallDifference = checkX - (GetX() + GetWidth());
-					}
-					else {
-						xFallDifference = checkX - (GetX() + GetWidth());
-
-						while (xFallDifference < -xSpeed) {
-							xFallDifference += xSpeed;
-						}
-					}
-					//std::cout << "CORRECTING BY: " << xFallDifference << "\n";
 				}
 				return true;
 			}

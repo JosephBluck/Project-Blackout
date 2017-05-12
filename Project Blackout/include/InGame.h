@@ -1,10 +1,12 @@
 #pragma once
 #include "GameStates.h"
+#include "GSManager.h"
 #include"InputManager.h"
 #include"SoundManager.h"
 #include "Sprite.h"
 #include "Player.h"
 #include "BitmapSprite.h"
+#include "Paused.h"
 
 class InGame : public GameState
 {

@@ -168,6 +168,7 @@
     <ClCompile Include="src\Intro.cpp" />
     <ClCompile Include="src\MainMenu.cpp" />
     <ClCompile Include="src\MathFunctions.cpp" />
+    <ClCompile Include="src\Paused.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\SDLInit.cpp" />
     <ClCompile Include="src\SoundManager.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="include\InputManager.h" />
     <ClInclude Include="include\MainMenu.h" />
     <ClInclude Include="include\MathFunctions.h" />
+    <ClInclude Include="include\Paused.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\SDLInit.h" />
     <ClInclude Include="include\SoundManager.h" />

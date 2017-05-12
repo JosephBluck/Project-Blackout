@@ -87,6 +87,9 @@
     <ClCompile Include="src\BitmapSprite.cpp">
       <Filter>Source Files\Core Classes</Filter>
     </ClCompile>
+    <ClCompile Include="src\Paused.cpp">
+      <Filter>Source Files\GameStates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\SDLInit.h">
@@ -133,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="include\BitmapSprite.h">
       <Filter>Header Files\Core Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Paused.h">
+      <Filter>Header Files\GameStates</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

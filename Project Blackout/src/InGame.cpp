@@ -48,6 +48,11 @@ void InGame::Update()
 {
 	player->Update();
 	UpdateCamera();
+
+	if (input->WasKeyPressed(SDL_SCANCODE_P))
+	{
+		GS_Manager->AddState(new Paused(renderer,input ,GS_Manager));
+	}
 }
 
 void InGame::UpdateCamera()
