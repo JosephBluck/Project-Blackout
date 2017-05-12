@@ -31,7 +31,7 @@ InGame::~InGame()
 
 bool InGame::InitInGame()
 {
-	player = new Player(renderer, "resources\\sprites\\Characters\\Player\\Player_Filler.png", 582, 100, 116, 171, 1, 1, input);
+	player = new Player(renderer, "resources\\sprites\\Characters\\Player\\Player.png", 582, 100, 76, 157, 1, 1, input);
 	if (!player)
 	{
 		return false;

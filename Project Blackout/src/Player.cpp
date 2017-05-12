@@ -35,11 +35,13 @@ void Player::UpdateXMovement()
 
 	if (dKeyPressed)
 	{
+		isFlip = SDL_FLIP_NONE;
 		isMovingX = true;
 		checkXmove = xMove + xSpeed;
 	}
 	else if (aKeyPressed)
 	{
+		isFlip = SDL_FLIP_HORIZONTAL;
 		isMovingX = true;
 		isMovingLeft = true;
 		checkXmove = xMove - xSpeed;
