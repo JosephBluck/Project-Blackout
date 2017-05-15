@@ -15,7 +15,7 @@ class MainMenu : public GameState
 {
 public:
 	MainMenu(SDL_Renderer* rendererInput, InputManager* _input, GameStateManager* manager);
-	~MainMenu();
+	~MainMenu() override;
 	bool InitMenu();
 
 	void Update() override;

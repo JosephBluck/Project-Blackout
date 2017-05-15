@@ -12,7 +12,7 @@ class GameState
 {
 public:
 	GameState(GameStateManager* _gsManager, SDL_Renderer* _renderer);//initialise GameStates
-	~GameState();
+	virtual ~GameState();
 
 	virtual void Update();
 	virtual void Draw();

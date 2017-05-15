@@ -35,12 +35,12 @@ SoundManager::~SoundManager()
 {
 	if (hasBGM) {
 		Mix_FreeMusic(bgm);
-		delete bgm;
+		//delete bgm;
 	}
 
 	for (int i = 0; i < soundCount; i++) {
 		Mix_FreeChunk(&sounds[i]);
-		delete &sounds[i];
+		//delete &sounds[i];
 	}
 }
 
