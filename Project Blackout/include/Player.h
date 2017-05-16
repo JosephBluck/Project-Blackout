@@ -36,6 +36,9 @@ private:
 
 	bool CheckXCollision();
 	bool CheckYCollision();
+	bool CheckGravity();
+	bool hitFloor;
+	bool hitRoof;
 	bool CheckPixelData(int _offset, int _offset2, char axisBeingChecked);
 	PixelData col;
 	int checkPixel;

@@ -9,6 +9,8 @@ Player::Player(SDL_Renderer* rendererInput, char* fileName, int x, int y, int w,
 	xSpeed = 10;
 
 	jumpstate = Falling;
+	hitFloor = false;
+	hitRoof = false;
 }
 
 Player::~Player()
@@ -60,13 +62,9 @@ void Player::UpdateYMovement()
 	
 	//CHECK IF ABOVE AIR
 	if (jumpstate == Standing) {
-		ySpeed = 1;
-
-		if (!CheckYCollision()) {
+		if (CheckGravity())
+		{
 			jumpstate = Falling;
-		}
-		else{
-			ySpeed = 0;
 		}
 	}
 
@@ -99,13 +97,8 @@ void Player::UpdateYMovement()
 	}
 	case JumpState::Falling:
 	{
-		bool hitFloor = CheckYCollision();
-		if (checkYMove >= 500 || hitFloor)
+		if (checkYMove >= 500)
 		{
-			if (hitFloor) {
-				checkYMove += yFallDifference;
-			}
-
 			jumpstate = Over;
 		}
 		break;
@@ -140,8 +133,8 @@ void Player::UpdateYMovement()
 	}
 	}
 
-	checkYMove += ySpeed;
-
+	CheckYCollision();
+	std::cout << jumpstate << "\n";
 	posRect.y = checkYMove;
 }
 
@@ -183,6 +176,24 @@ bool Player::CheckXCollision()
 	return true;
 }
 
+bool Player::CheckGravity()
+{
+	int xOffset = GetX();
+	int yOffset = GetY() + 1;
+
+	PixelData col;
+	int checkPixel;
+
+	if (CheckPixelData(yOffset, xOffset, 'x'))
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
 bool Player::CheckYCollision()
 {
 	int xOffset = GetX();
@@ -190,15 +201,38 @@ bool Player::CheckYCollision()
 
 	PixelData col;
 	int checkPixel;
+	for (int i = 0; i < 50; i++)
+	{
+		if (CheckPixelData(yOffset, xOffset, 'y'))
+		{
+			if (hitRoof)
+			{
+				yOffset = GetY() + (ySpeed + i);
+			}
+			else if(hitFloor)
+			{
 
-	if (CheckPixelData(yOffset, xOffset, 'y'))
-	{
-		return true;
+				yOffset = GetY() + (ySpeed - i);
+			}
+		}
+		else
+		{
+			if (hitFloor)
+			{
+				jumpstate = Over;
+			}
+			if (hitRoof)
+			{
+				jumpstate = Falling;
+				ySpeed = 0;
+			}
+			hitFloor = false;
+			hitRoof = false;
+			checkYMove = yOffset;
+			return false;
+		}
 	}
-	else
-	{
-		return false;
-	}
+
 }
 
 bool Player::CheckPixelData(int _offset, int _offset2, char axisBeingChecked)
@@ -213,7 +247,16 @@ bool Player::CheckPixelData(int _offset, int _offset2, char axisBeingChecked)
 			if (col.r == 0) {
 				if (axisBeingChecked == 'y')
 				{
-					yFallDifference = checkY - (GetY() + GetHeight());
+					if (checkY <= _offset + (GetHeight() / 2))
+					{
+						hitRoof = true;
+						hitFloor = false;
+					}
+					else
+					{
+						hitFloor = true;
+						hitRoof = false;
+					}
 				}
 				return true;
 			}
