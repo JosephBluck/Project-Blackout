@@ -41,4 +41,3 @@ void GameStateManager::DrawState()
 		gameStatesVector.at(i)->Draw();
 	}
 }
-

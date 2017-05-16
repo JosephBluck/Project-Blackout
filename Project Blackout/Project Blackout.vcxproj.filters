@@ -93,6 +93,9 @@
     <ClCompile Include="src\LodePNG.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\LevelManager.cpp">
+      <Filter>Source Files\Core Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\SDLInit.h">
@@ -145,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="include\LodePNG.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LevelManager.h">
+      <Filter>Header Files\Core Classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

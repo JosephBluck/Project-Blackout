@@ -166,6 +166,7 @@
     <ClCompile Include="src\InGame.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
     <ClCompile Include="src\Intro.cpp" />
+    <ClCompile Include="src\LevelManager.cpp" />
     <ClCompile Include="src\LodePNG.cpp" />
     <ClCompile Include="src\MainMenu.cpp" />
     <ClCompile Include="src\MathFunctions.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="include\Intro.h" />
     <ClInclude Include="include\InGame.h" />
     <ClInclude Include="include\InputManager.h" />
+    <ClInclude Include="include\LevelManager.h" />
     <ClInclude Include="include\LodePNG.h" />
     <ClInclude Include="include\MainMenu.h" />
     <ClInclude Include="include\MathFunctions.h" />
