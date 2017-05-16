@@ -72,8 +72,8 @@ void InGame::Draw()
 {
 	SDL_SetRenderTarget(renderer, cameraRenderBuffer);
 	SDL_RenderClear(renderer);
-	player->Draw();
 	collisionMap->Draw();
+	player->Draw();
 	SDL_SetRenderTarget(renderer, NULL);
 	SDL_RenderCopy(renderer, cameraRenderBuffer, &camera, &screen);
 }

@@ -48,7 +48,8 @@ private:
 		Standing, Raising, Peak, Falling, Over
 	};
 	JumpState jumpstate; 
-
 	int yMaxHeight;
 	int maxFallSpeed = 30;
+
+	SDL_Rect hitbox;
 };

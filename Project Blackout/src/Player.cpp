@@ -11,6 +11,7 @@ Player::Player(SDL_Renderer* rendererInput, char* fileName, int x, int y, int w,
 	jumpstate = Falling;
 	hitFloor = false;
 	hitRoof = false;
+	hitbox = { x + 2,y,53,157 };
 }
 
 Player::~Player()
@@ -40,6 +41,7 @@ void Player::UpdateXMovement()
 		isFlip = SDL_FLIP_NONE;
 		isMovingX = true;
 		checkXmove = xMove + xSpeed;
+		posRect.x = hitbox.x - 2;
 	}
 	else if (aKeyPressed)
 	{
@@ -47,12 +49,14 @@ void Player::UpdateXMovement()
 		isMovingX = true;
 		isMovingLeft = true;
 		checkXmove = xMove - xSpeed;
+		posRect.x = hitbox.x - 23;
 	}
 	if (isMovingX && checkXmove <= 2445 && checkXmove >= 0)
 	{
 		xCollision = CheckXCollision();
 	}
-	posRect.x = xMove;
+	hitbox.x = xMove;
+	std::cout << posRect.x << "\n";
 }
 
 void Player::UpdateYMovement()
@@ -134,13 +138,8 @@ void Player::UpdateYMovement()
 	}
 
 	CheckYCollision();
-	std::cout << jumpstate << "\n";
-	posRect.y = checkYMove;
-}
-
-void Player::Draw()
-{
-	AnimSprite::Draw();
+	hitbox.y = checkYMove;
+	posRect.y = hitbox.y;
 }
 
 void Player::UpdateCollisionMap(std::vector<PixelData>& _collisionMap, int colWidth, int colHeight)
@@ -155,14 +154,14 @@ void Player::UpdateCollisionMap(std::vector<PixelData>& _collisionMap, int colWi
 bool Player::CheckXCollision()
 {
 	int xOffset;
-	int yOffset = GetY();
+	int yOffset = hitbox.y;
 	for (int i = 0; i < 10; i++)
 	{
 		if (isMovingLeft) {
-			xOffset = GetX() - (xSpeed - i);
+			xOffset = hitbox.x - (xSpeed - i);
 		}
 		else {
-			xOffset = GetX() + (xSpeed - i);
+			xOffset = hitbox.x + (xSpeed - i);
 		}
 
 		PixelData col;
@@ -178,8 +177,8 @@ bool Player::CheckXCollision()
 
 bool Player::CheckGravity()
 {
-	int xOffset = GetX();
-	int yOffset = GetY() + 1;
+	int xOffset = hitbox.x;
+	int yOffset = hitbox.y + 1;
 
 	PixelData col;
 	int checkPixel;
@@ -196,8 +195,8 @@ bool Player::CheckGravity()
 
 bool Player::CheckYCollision()
 {
-	int xOffset = GetX();
-	int yOffset = GetY() + ySpeed;
+	int xOffset = hitbox.x;
+	int yOffset = hitbox.y + ySpeed;
 
 	PixelData col;
 	int checkPixel;
@@ -207,12 +206,12 @@ bool Player::CheckYCollision()
 		{
 			if (hitRoof)
 			{
-				yOffset = GetY() + (ySpeed + i);
+				yOffset = hitbox.y + (ySpeed + i);
 			}
 			else if(hitFloor)
 			{
 
-				yOffset = GetY() + (ySpeed - i);
+				yOffset = hitbox.y + (ySpeed - i);
 			}
 		}
 		else
@@ -237,9 +236,9 @@ bool Player::CheckYCollision()
 
 bool Player::CheckPixelData(int _offset, int _offset2, char axisBeingChecked)
 {
-	for (int checkY = _offset; checkY < _offset + GetHeight(); checkY++)
+	for (int checkY = _offset; checkY < _offset + hitbox.h; checkY++)
 	{
-		for (int checkX = _offset2; checkX < _offset2 + GetWidth(); checkX++)
+		for (int checkX = _offset2; checkX < _offset2 + hitbox.w; checkX++)
 		{
 			checkPixel = (checkY * collisionSize.w) + checkX;
 			col = collisionPixels[checkPixel];
@@ -247,7 +246,7 @@ bool Player::CheckPixelData(int _offset, int _offset2, char axisBeingChecked)
 			if (col.r == 0) {
 				if (axisBeingChecked == 'y')
 				{
-					if (checkY <= _offset + (GetHeight() / 2))
+					if (checkY <= _offset + (hitbox.h / 2))
 					{
 						hitRoof = true;
 						hitFloor = false;
@@ -263,4 +262,9 @@ bool Player::CheckPixelData(int _offset, int _offset2, char axisBeingChecked)
 		}
 	}
 	return false;
+}
+
+void Player::Draw()
+{
+	AnimSprite::Draw();
 }
