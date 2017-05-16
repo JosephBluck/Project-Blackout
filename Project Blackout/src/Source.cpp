@@ -36,7 +36,7 @@ int main(int arc, char* args[])
 	}
 
 	delete input; //Delete the input manager
-
+	delete manager;
 	//DELETE WINDOW AND CLOSE SDL
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
